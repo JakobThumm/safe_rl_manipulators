@@ -123,6 +123,20 @@ The results will be saved in
 src/catkin_ws/src/example_modrob_human_training/training_results
 ```
 
+## Test pretrained models
+We provide the training results of the safe and unsafe agent (baseline) for two
+experiments: random goal and evading human.
+These experiments are located in
+```
+src/catkin_ws/src/example_modrob_human_training/training_results
+```
+
+To test these models, you will need to adapt the file
+```
+src/catkin_ws/src/example_modrob_human_training/config/my_modrob_safe_human_params_sac_her_modrob1_load.yaml
+```
+Choose the correct `outdir` and choose the `load_epoch` (195 for fully trained model).
+
 ## Docker setup
 
 

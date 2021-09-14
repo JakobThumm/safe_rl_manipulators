@@ -1,0 +1,2206 @@
+{
+    "ac_kwargs":	{
+        "hidden_sizes":	[
+            64,
+            64,
+            64,
+            64,
+            64,
+            64,
+            64,
+            64,
+            64
+        ]
+    },
+    "actor_critic":	"MLPActorCritic",
+    "alpha":	0.2,
+    "batch_size":	128,
+    "env":	{
+        "<TimeLimit<ModRobSafeHumanEnv<ModRobSafeHumanEnv-v0>>>":	{
+            "_elapsed_steps":	null,
+            "_max_episode_steps":	10000,
+            "action_space":	{
+                "Box([-1. -1. -1. -1. -1. -1.], [1. 1. 1. 1. 1. 1.], (6,), float32)":	{
+                    "_np_random":	null,
+                    "bounded_above":	"[ True  True  True  True  True  True]",
+                    "bounded_below":	"[ True  True  True  True  True  True]",
+                    "dtype":	"float32",
+                    "high":	"[1. 1. 1. 1. 1. 1.]",
+                    "low":	"[-1. -1. -1. -1. -1. -1.]",
+                    "shape":	[
+                        6
+                    ]
+                }
+            },
+            "env":	{
+                "<ModRobSafeHumanEnv<ModRobSafeHumanEnv-v0>>":	{
+                    "_arm_joint_names":	[
+                        "joint0",
+                        "joint1",
+                        "joint2",
+                        "joint3",
+                        "joint4",
+                        "joint5"
+                    ],
+                    "_arm_joint_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f6516f898>":	{
+                            "data_class":	"Motion",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f6516fcf8>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517e258>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ae70>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f6516f780>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f6511c048>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f6516f0b8>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f6515da08>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f6515da08>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f6515dda0>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f6516ff98>":	{
+                                                        "_fileno":	29,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/standalone_nodelet",
+                                                        "header":	null,
+                                                        "id":	9,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/modrob1/new_goal_motion",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f6516f5f8>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Motion",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/modrob1/new_goal_motion"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517e360>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58370
+                                                        ],
+                                                        "socket":	"<socket.socket fd=29, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58370)>",
+                                                        "stat_bytes":	240,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517e2b0>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f6515da08>",
+                                                "_queue":	[],
+                                                "_queue_size":	100,
+                                                "_thread":	{
+                                                    "<Thread(Thread-13, started daemon 140184972683008)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184972683008,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-13",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f651787f0>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f6515d918>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f6515d918>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f6515dee0>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Motion",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/modrob1/new_goal_motion",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ad50>",
+                                    "queue_size":	100,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/modrob1/new_goal_motion",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"custom_robot_msgs/Motion"
+                                }
+                            },
+                            "md5sum":	"36bbaa2adcc2a65661c5edf800ce43c6",
+                            "name":	"/modrob1/new_goal_motion",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/modrob1/new_goal_motion",
+                            "type":	"custom_robot_msgs/Motion"
+                        }
+                    },
+                    "_collision_topic":	"/modrob1/collisions",
+                    "_gazebo_model_state_topic":	"/gazebo/model_states",
+                    "_gripper_joint_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f6516f5c0>":	{
+                            "data_class":	"Float64MultiArray",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f6516f630>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517e0a0>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519af30>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f6516fb70>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f6511c060>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f6516fc50>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f6515deb8>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f6515deb8>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f6515db70>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f6516fbe0>":	{
+                                                        "_fileno":	23,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/gazebo",
+                                                        "header":	null,
+                                                        "id":	8,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/modrob1/gripper_position_controller/command",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f6516fba8>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Float64MultiArray",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/modrob1/gripper_position_controller/command"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517e0f8>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58368
+                                                        ],
+                                                        "socket":	"<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58368)>",
+                                                        "stat_bytes":	1690,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517e3b8>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f6515deb8>",
+                                                "_queue":	[],
+                                                "_queue_size":	10,
+                                                "_thread":	{
+                                                    "<Thread(Thread-12, started daemon 140184981075712)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184981075712,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-12",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f651780f0>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f6515dd78>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f6515dd78>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f6515df30>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Float64MultiArray",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/modrob1/gripper_position_controller/command",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ade0>",
+                                    "queue_size":	10,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/modrob1/gripper_position_controller/command",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"std_msgs/Float64MultiArray"
+                                }
+                            },
+                            "md5sum":	"4b7d974086d4060e7db4613a7e6c3ba4",
+                            "name":	"/modrob1/gripper_position_controller/command",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/modrob1/gripper_position_controller/command",
+                            "type":	"std_msgs/Float64MultiArray"
+                        }
+                    },
+                    "_human_joint_sensor_topic":	"/human_joint_pos",
+                    "_human_play_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f6516f160>":	{
+                            "data_class":	"Bool",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f6516fa90>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517ea98>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f0f0>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f65178240>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f65129078>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f65178470>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f65127170>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f65127170>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f65127378>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f65178b70>":	{
+                                                        "_fileno":	39,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/gazebo",
+                                                        "header":	null,
+                                                        "id":	16,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/actor/start_stop_cmd",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f65178a58>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Bool",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/actor/start_stop_cmd"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517e8e0>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58498
+                                                        ],
+                                                        "socket":	"<socket.socket fd=39, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58498)>",
+                                                        "stat_bytes":	172,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517ea40>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f65127170>",
+                                                "_queue":	[],
+                                                "_queue_size":	100,
+                                                "_thread":	{
+                                                    "<Thread(Thread-21, started daemon 140184930719488)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184930719488,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-21",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f65140128>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f651273f0>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f651273f0>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f65127440>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Bool",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/actor/start_stop_cmd",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f120>",
+                                    "queue_size":	100,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/actor/start_stop_cmd",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"std_msgs/Bool"
+                                }
+                            },
+                            "md5sum":	"8b94c1b53db61fb6aed406028ad6332a",
+                            "name":	"/actor/start_stop_cmd",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/actor/start_stop_cmd",
+                            "type":	"std_msgs/Bool"
+                        }
+                    },
+                    "_human_pose_shift_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f65178d30>":	{
+                            "data_class":	"Pose",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f65178518>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f950cbdb0>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519af60>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f651789b0>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f65129048>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f65178b38>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f651273c8>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f651273c8>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f65127238>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f65178278>":	{
+                                                        "_fileno":	30,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/gazebo",
+                                                        "header":	null,
+                                                        "id":	14,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/actor/pose_cmd",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f651786d8>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Pose",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/actor/pose_cmd"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517e150>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58494
+                                                        ],
+                                                        "socket":	"<socket.socket fd=30, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58494)>",
+                                                        "stat_bytes":	692,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517e200>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f651273c8>",
+                                                "_queue":	[],
+                                                "_queue_size":	100,
+                                                "_thread":	{
+                                                    "<Thread(Thread-19, started daemon 140184939112192)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184939112192,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-19",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f651400b8>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f651272b0>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f651272b0>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f651270d0>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Pose",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/actor/pose_cmd",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f030>",
+                                    "queue_size":	100,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/actor/pose_cmd",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"geometry_msgs/Pose"
+                                }
+                            },
+                            "md5sum":	"e45d45a5a1ce597b249e23fb30fc871f",
+                            "name":	"/actor/pose_cmd",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/actor/pose_cmd",
+                            "type":	"geometry_msgs/Pose"
+                        }
+                    },
+                    "_human_script_time_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f65178978>":	{
+                            "data_class":	"Float64",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f65178e10>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517e4c0>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f090>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f65178668>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f65129648>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f651402e8>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f65127350>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f65127350>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f65127468>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f65140198>":	{
+                                                        "_fileno":	38,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/gazebo",
+                                                        "header":	null,
+                                                        "id":	15,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/actor/script_time_cmd",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f65140160>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Float64",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/actor/script_time_cmd"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517ed58>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58496
+                                                        ],
+                                                        "socket":	"<socket.socket fd=38, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58496)>",
+                                                        "stat_bytes":	179,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517eeb8>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f65127350>",
+                                                "_queue":	[],
+                                                "_queue_size":	100,
+                                                "_thread":	{
+                                                    "<Thread(Thread-20, started daemon 140184955897600)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184955897600,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-20",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f65140208>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f65127210>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f65127210>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f651273a0>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Float64",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/actor/script_time_cmd",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f060>",
+                                    "queue_size":	100,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/actor/script_time_cmd",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"std_msgs/Float64"
+                                }
+                            },
+                            "md5sum":	"fdb28210bfa9d7c91146260178d9a584",
+                            "name":	"/actor/script_time_cmd",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/actor/script_time_cmd",
+                            "type":	"std_msgs/Float64"
+                        }
+                    },
+                    "_joint_states_topic":	"/modrob1/joint_states",
+                    "action_norm":	"[[0.  0.4]\n [0.  0.4]\n [0.  0.4]\n [0.  0.4]\n [0.  0.4]\n [0.  0.4]]",
+                    "action_space":	{
+                        "Box([-1. -1. -1. -1. -1. -1.], [1. 1. 1. 1. 1. 1.], (6,), float32)":	{
+                            "_np_random":	null,
+                            "bounded_above":	"[ True  True  True  True  True  True]",
+                            "bounded_below":	"[ True  True  True  True  True  True]",
+                            "dtype":	"float32",
+                            "high":	"[1. 1. 1. 1. 1. 1.]",
+                            "low":	"[-1. -1. -1. -1. -1. -1.]",
+                            "shape":	[
+                                6
+                            ]
+                        }
+                    },
+                    "base_pose":	"position: \n  x: -0.24999787129660175\n  y: -3.2971669677787745e-06\n  z: 0.770002167267799\norientation: \n  x: -9.735711183153154e-06\n  y: -8.368879990107074e-06\n  z: 4.853301513804774e-06\n  w: 0.9999999999058117",
+                    "capsules":	[
+                        "Capsule",
+                        "Capsule",
+                        "Capsule",
+                        "Capsule",
+                        "Capsule",
+                        "Capsule"
+                    ],
+                    "collision_penalty":	-1,
+                    "controllers_list":	[],
+                    "controllers_object":	{
+                        "<openai_ros.controllers_connection.ControllersConnection object at 0x7f7f6516f9b0>":	{
+                            "controllers_list":	[],
+                            "switch_service":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516f668>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516f2b0>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"SwitchControllerResponse",
+                                            "resolved_name":	"/controller_manager/switch_controller",
+                                            "service_class":	"SwitchController"
+                                        }
+                                    },
+                                    "request_class":	"SwitchControllerRequest",
+                                    "resolved_name":	"/controller_manager/switch_controller",
+                                    "response_class":	"SwitchControllerResponse",
+                                    "seq":	0,
+                                    "service_class":	"SwitchController",
+                                    "transport":	null,
+                                    "uri":	null
+                                }
+                            },
+                            "switch_service_name":	"//controller_manager/switch_controller"
+                        }
+                    },
+                    "critical_collision_penalty":	-1,
+                    "cumulated_episode_reward":	0,
+                    "cumulated_steps":	0.0,
+                    "distance_penalty_orientation":	0.0,
+                    "distance_penalty_position":	0.0,
+                    "episode_num":	0,
+                    "gazebo":	{
+                        "<openai_ros.gazebo_connection.GazeboConnection object at 0x7f7f929ad2e8>":	{
+                            "_max_retry":	20,
+                            "pause":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516f4e0>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516f470>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"EmptyResponse",
+                                            "resolved_name":	"/gazebo/pause_physics",
+                                            "service_class":	"Empty"
+                                        }
+                                    },
+                                    "request_class":	"EmptyRequest",
+                                    "resolved_name":	"/gazebo/pause_physics",
+                                    "response_class":	"EmptyResponse",
+                                    "seq":	3,
+                                    "service_class":	"Empty",
+                                    "transport":	null,
+                                    "uri":	"rosrpc://skynet:49937"
+                                }
+                            },
+                            "reset_simulation_proxy":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516f748>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516fa58>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"EmptyResponse",
+                                            "resolved_name":	"/gazebo/reset_simulation",
+                                            "service_class":	"Empty"
+                                        }
+                                    },
+                                    "request_class":	"EmptyRequest",
+                                    "resolved_name":	"/gazebo/reset_simulation",
+                                    "response_class":	"EmptyResponse",
+                                    "seq":	0,
+                                    "service_class":	"Empty",
+                                    "transport":	null,
+                                    "uri":	null
+                                }
+                            },
+                            "reset_world_or_sim":	"WORLD",
+                            "reset_world_proxy":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516fdd8>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516f8d0>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"EmptyResponse",
+                                            "resolved_name":	"/gazebo/reset_world",
+                                            "service_class":	"Empty"
+                                        }
+                                    },
+                                    "request_class":	"EmptyRequest",
+                                    "resolved_name":	"/gazebo/reset_world",
+                                    "response_class":	"EmptyResponse",
+                                    "seq":	1,
+                                    "service_class":	"Empty",
+                                    "transport":	null,
+                                    "uri":	"rosrpc://skynet:49937"
+                                }
+                            },
+                            "set_physics":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516f7f0>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516f400>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"SetPhysicsPropertiesResponse",
+                                            "resolved_name":	"/gazebo/set_physics_properties",
+                                            "service_class":	"SetPhysicsProperties"
+                                        }
+                                    },
+                                    "request_class":	"SetPhysicsPropertiesRequest",
+                                    "resolved_name":	"/gazebo/set_physics_properties",
+                                    "response_class":	"SetPhysicsPropertiesResponse",
+                                    "seq":	0,
+                                    "service_class":	"SetPhysicsProperties",
+                                    "transport":	null,
+                                    "uri":	null
+                                }
+                            },
+                            "start_init_physics_parameters":	false,
+                            "unpause":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f9297cf28>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f9297cf98>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"EmptyResponse",
+                                            "resolved_name":	"/gazebo/unpause_physics",
+                                            "service_class":	"Empty"
+                                        }
+                                    },
+                                    "request_class":	"EmptyRequest",
+                                    "resolved_name":	"/gazebo/unpause_physics",
+                                    "response_class":	"EmptyResponse",
+                                    "seq":	3,
+                                    "service_class":	"Empty",
+                                    "transport":	null,
+                                    "uri":	"rosrpc://skynet:49937"
+                                }
+                            }
+                        }
+                    },
+                    "gazebo_model_pose":	{
+                        "actor":	"position: \n  x: 0.8332948441324675\n  y: 0.1043361933045341\n  z: 1.0064870806335493\norientation: \n  x: -0.45974395430180676\n  y: 0.6876225703043024\n  z: 0.4823927144727075\n  w: -0.28828452319660836",
+                        "goal_pos":	"position: \n  x: 1.0\n  y: 1.0\n  z: 10.0\norientation: \n  x: 0.0\n  y: 0.0\n  z: 0.0\n  w: 1.0",
+                        "ground_plane":	"position: \n  x: 0.0\n  y: 0.0\n  z: 0.0\norientation: \n  x: 0.0\n  y: 0.0\n  z: 0.0\n  w: 1.0",
+                        "modrob1":	"position: \n  x: -0.24999533527945658\n  y: -3.7321523783909356e-06\n  z: 0.7700021137301145\norientation: \n  x: -1.1025873080503323e-05\n  y: -1.3897624376451438e-05\n  z: -4.37673647263594e-06\n  w: 0.9999999998330652",
+                        "simple_table":	"position: \n  x: 0.0\n  y: 0.0\n  z: 0.0\norientation: \n  x: 0.0\n  y: 0.0\n  z: 0.0\n  w: 1.0",
+                        "start_pos":	"position: \n  x: 1.0\n  y: 1.0\n  z: 10.0\norientation: \n  x: 0.0\n  y: 0.0\n  z: 0.0\n  w: 1.0"
+                    },
+                    "gazebo_model_twist":	{
+                        "actor":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0",
+                        "goal_pos":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0",
+                        "ground_plane":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0",
+                        "modrob1":	"linear: \n  x: -7.788754995525403e-05\n  y: 3.124212336399832e-06\n  z: -1.993536272847047e-05\nangular: \n  x: -0.00010903814929278353\n  y: 0.0004901026457722751\n  z: 0.001271459982611134",
+                        "simple_table":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0",
+                        "start_pos":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0"
+                    },
+                    "goal_arm_joint_position":	[
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "goal_error":	0.08,
+                    "goal_joint_diff":	3,
+                    "goal_reward":	0,
+                    "gripper1_max":	0.01,
+                    "gripper1_min":	0,
+                    "gripper2_max":	0.04,
+                    "gripper2_min":	0.03,
+                    "gripper_max_delta":	0.003,
+                    "human_joint_meas_ids":	[
+                        8,
+                        17,
+                        2
+                    ],
+                    "human_joint_pos":	[
+                        [
+                            0.5919797271235534,
+                            0.4219764715785484,
+                            1.1863738512124828
+                        ],
+                        [
+                            0.3329324426708419,
+                            0.42110911922015315,
+                            1.1077355059988914
+                        ],
+                        [
+                            0.5425320239928456,
+                            0.23992986147419657,
+                            1.6673716481163021
+                        ]
+                    ],
+                    "human_motion_pos_random":	0.2,
+                    "human_motion_time_random":	1,
+                    "init_arm_joint_position":	[
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "init_error":	0.02,
+                    "is_collided":	false,
+                    "joint_max":	3.0,
+                    "joint_max_delta":	0.4,
+                    "joint_max_v":	0.8,
+                    "joint_min":	-3.0,
+                    "joint_state":	"header: \n  seq: 2505\n  stamp: \n    secs: 12\n    nsecs: 667000000\n  frame_id: ''\nname: \n  - hand_to_finger1\n  - hand_to_finger2\n  - joint0\n  - joint1\n  - joint2\n  - joint3\n  - joint4\n  - joint5\nposition: [0.0017828218992946554, 0.03491341737294816, 0.005236110114374526, 0.002360724078814158, 0.0008730278491650978, -0.008921978208994652, -0.0027125151140170445, -0.00204150207488496]\nvelocity: [0.0063540995331107485, 0.0007662187295219581, 0.017299979896313634, 0.00785122229796654, 0.010615885426334792, -0.07136619821444551, -0.004723359969487497, 0.0009817868211710811]\neffort: [-0.17617027815314315, -0.38359452783870324, -36.426022190467755, -16.554851598290732, -8.452124470439415, 15.344325032378592, 3.700809988039566, 6.165973836466776]",
+                    "joint_transforamtions":	[
+                        "[[1.  0.  0.  0. ]\n [0.  1.  0.  0. ]\n [0.  0.  1.  0.1]\n [0.  0.  0.  1. ]]",
+                        "[[-2.0510e-10  1.0000e+00  0.0000e+00  0.0000e+00]\n [ 2.0510e-10  4.2067e-20  1.0000e+00 -6.5500e-02]\n [ 1.0000e+00  2.0510e-10 -2.0510e-10  2.3620e-01]\n [ 0.0000e+00  0.0000e+00  0.0000e+00  1.0000e+00]]",
+                        "[[-2.0510e-10  1.0000e+00  0.0000e+00  4.0000e-01]\n [ 1.0000e+00  2.0510e-10  4.1021e-10  0.0000e+00]\n [ 4.1021e-10  8.4135e-20 -1.0000e+00  1.3530e-01]\n [ 0.0000e+00  0.0000e+00  0.0000e+00  1.0000e+00]]",
+                        "[[ 1.000e+00  0.000e+00  0.000e+00  1.140e-01]\n [ 0.000e+00 -2.051e-10  1.000e+00  4.700e-02]\n [ 0.000e+00 -1.000e+00 -2.051e-10  1.746e-01]\n [ 0.000e+00  0.000e+00  0.000e+00  1.000e+00]]",
+                        "[[ 1.000e+00  0.000e+00  0.000e+00  0.000e+00]\n [ 0.000e+00 -2.051e-10 -1.000e+00  6.500e-02]\n [ 0.000e+00  1.000e+00 -2.051e-10  3.776e-01]\n [ 0.000e+00  0.000e+00  0.000e+00  1.000e+00]]",
+                        "[[ 2.0510e-10 -2.0510e-10  1.0000e+00 -6.0000e-02]\n [-1.0000e+00  4.1021e-10  2.0510e-10  6.3000e-02]\n [-4.1021e-10 -1.0000e+00 -2.0510e-10  6.1550e-02]\n [ 0.0000e+00  0.0000e+00  0.0000e+00  1.0000e+00]]"
+                    ],
+                    "max_goal_pos_x":	5,
+                    "max_goal_pos_y":	5,
+                    "max_goal_pos_z":	5,
+                    "min_goal_pos_x":	-5,
+                    "min_goal_pos_y":	-5,
+                    "min_goal_pos_z":	0.1,
+                    "movement_error":	0.01,
+                    "movement_timeout":	0.2,
+                    "n_actions":	6,
+                    "n_human_obs":	3,
+                    "n_observations":	32,
+                    "np_random":	"RandomState(MT19937)",
+                    "observation_id_collision":	30,
+                    "observation_id_critical_collision":	31,
+                    "observation_id_current_ee_pose":	18,
+                    "observation_id_current_joint_values":	0,
+                    "observation_id_current_joint_velocities":	12,
+                    "observation_id_goal_joint_values":	6,
+                    "observation_id_human_joints":	21,
+                    "observation_id_joints":	0,
+                    "observation_norm":	"[[-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-0.8  1.6]\n [-0.8  1.6]\n [-0.8  1.6]\n [-0.8  1.6]\n [-0.8  1.6]\n [-0.8  1.6]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]]",
+                    "observation_space":	{
+                        "Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\n 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.\n 1. 1. 1. 1. 1. 1. 1. 1.], (32,), float32)":	{
+                            "_np_random":	null,
+                            "bounded_above":	"[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+                            "bounded_below":	"[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+                            "dtype":	"float32",
+                            "high":	"[1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.\n 1. 1. 1. 1. 1. 1. 1. 1.]",
+                            "low":	"[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\n 0. 0. 0. 0. 0. 0. 0. 0.]",
+                            "shape":	[
+                                32
+                            ]
+                        }
+                    },
+                    "reset_controls":	false,
+                    "reward_pub":	{
+                        "<rospy.topics.Publisher object at 0x7f7ffa935710>":	{
+                            "data_class":	"RLExperimentInfo",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7ffa935780>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517eca8>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ac30>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f6516f358>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f65224b70>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[],
+                                    "data_class":	"RLExperimentInfo",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/openai/reward",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ac90>",
+                                    "queue_size":	1,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/openai/reward",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"openai_ros/RLExperimentInfo"
+                                }
+                            },
+                            "md5sum":	"117729220546455cc216a7df0b6e91d0",
+                            "name":	"/openai/reward",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/openai/reward",
+                            "type":	"openai_ros/RLExperimentInfo"
+                        }
+                    },
+                    "reward_range":	[
+                        -Infinity,
+                        Infinity
+                    ],
+                    "robot_name_":	"modrob1",
+                    "robot_name_space":	"",
+                    "ros_ws_abspath":	"/home/thummj/catkin_ws/",
+                    "safety_distance_ground":	0.03,
+                    "spec":	{
+                        "EnvSpec(ModRobSafeHumanEnv-v0)":	{
+                            "_env_name":	"ModRobSafeHumanEnv",
+                            "_kwargs":	{},
+                            "entry_point":	"openai_ros.task_envs.human_modrob.modrob_safe_human:ModRobSafeHumanEnv",
+                            "id":	"ModRobSafeHumanEnv-v0",
+                            "max_episode_steps":	10000,
+                            "nondeterministic":	false,
+                            "reward_threshold":	null,
+                            "timestep_limit":	100
+                        }
+                    },
+                    "time_penalty":	-1,
+                    "tool_transformation":	"[[1.      0.      0.      0.     ]\n [0.      1.      0.      0.     ]\n [0.      0.      1.      0.11955]\n [0.      0.      0.      1.     ]]",
+                    "use_delta_actions":	true,
+                    "use_goal_randomization":	true
+                }
+            },
+            "metadata":	{
+                "render.modes":	[]
+            },
+            "observation_space":	{
+                "Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\n 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.\n 1. 1. 1. 1. 1. 1. 1. 1.], (32,), float32)":	{
+                    "_np_random":	null,
+                    "bounded_above":	"[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+                    "bounded_below":	"[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+                    "dtype":	"float32",
+                    "high":	"[1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.\n 1. 1. 1. 1. 1. 1. 1. 1.]",
+                    "low":	"[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\n 0. 0. 0. 0. 0. 0. 0. 0.]",
+                    "shape":	[
+                        32
+                    ]
+                }
+            },
+            "reward_range":	[
+                -Infinity,
+                Infinity
+            ]
+        }
+    },
+    "exp_name":	"ModRobSafeHumanEnv-v0",
+    "gamma":	0.99,
+    "k_her_samples":	4,
+    "load_epoch":	-1,
+    "logger":	{
+        "<spinup.utils.logx.EpochLogger object at 0x7f7f950facc0>":	{
+            "epoch_dict":	{},
+            "exp_name":	"ModRobSafeHumanEnv-v0",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/home/thummj/catkin_ws/src/example_modrob_human_training/training_results/2021_08_28_07_12/ModRobSafeHumanEnv-v0/ModRobSafeHumanEnv-v0_s1",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/home/thummj/catkin_ws/src/example_modrob_human_training/training_results/2021_08_28_07_12/ModRobSafeHumanEnv-v0/ModRobSafeHumanEnv-v0_s1/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"ModRobSafeHumanEnv-v0",
+        "output_dir":	"/home/thummj/catkin_ws/src/example_modrob_human_training/training_results/2021_08_28_07_12/ModRobSafeHumanEnv-v0/ModRobSafeHumanEnv-v0_s1"
+    },
+    "lr":	0.0005,
+    "max_ep_len":	100,
+    "n_episodes_per_epoch":	30,
+    "n_epochs":	200,
+    "n_updates":	40,
+    "num_test_episodes":	1,
+    "polyak":	0.995,
+    "replay_size":	1000000,
+    "save_freq":	5,
+    "seed":	1,
+    "start_steps":	5000,
+    "test_env":	{
+        "<TimeLimit<ModRobSafeHumanEnv<ModRobSafeHumanEnv-v0>>>":	{
+            "_elapsed_steps":	null,
+            "_max_episode_steps":	10000,
+            "action_space":	{
+                "Box([-1. -1. -1. -1. -1. -1.], [1. 1. 1. 1. 1. 1.], (6,), float32)":	{
+                    "_np_random":	null,
+                    "bounded_above":	"[ True  True  True  True  True  True]",
+                    "bounded_below":	"[ True  True  True  True  True  True]",
+                    "dtype":	"float32",
+                    "high":	"[1. 1. 1. 1. 1. 1.]",
+                    "low":	"[-1. -1. -1. -1. -1. -1.]",
+                    "shape":	[
+                        6
+                    ]
+                }
+            },
+            "env":	{
+                "<ModRobSafeHumanEnv<ModRobSafeHumanEnv-v0>>":	{
+                    "_arm_joint_names":	[
+                        "joint0",
+                        "joint1",
+                        "joint2",
+                        "joint3",
+                        "joint4",
+                        "joint5"
+                    ],
+                    "_arm_joint_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f6516f898>":	{
+                            "data_class":	"Motion",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f6516fcf8>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517e258>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ae70>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f6516f780>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f6511c048>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f6516f0b8>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f6515da08>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f6515da08>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f6515dda0>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f6516ff98>":	{
+                                                        "_fileno":	29,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/standalone_nodelet",
+                                                        "header":	null,
+                                                        "id":	9,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/modrob1/new_goal_motion",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f6516f5f8>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Motion",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/modrob1/new_goal_motion"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517e360>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58370
+                                                        ],
+                                                        "socket":	"<socket.socket fd=29, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58370)>",
+                                                        "stat_bytes":	240,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517e2b0>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f6515da08>",
+                                                "_queue":	[],
+                                                "_queue_size":	100,
+                                                "_thread":	{
+                                                    "<Thread(Thread-13, started daemon 140184972683008)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184972683008,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-13",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f651787f0>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f6515d918>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f6515d918>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f6515dee0>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Motion",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/modrob1/new_goal_motion",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ad50>",
+                                    "queue_size":	100,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/modrob1/new_goal_motion",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"custom_robot_msgs/Motion"
+                                }
+                            },
+                            "md5sum":	"36bbaa2adcc2a65661c5edf800ce43c6",
+                            "name":	"/modrob1/new_goal_motion",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/modrob1/new_goal_motion",
+                            "type":	"custom_robot_msgs/Motion"
+                        }
+                    },
+                    "_collision_topic":	"/modrob1/collisions",
+                    "_gazebo_model_state_topic":	"/gazebo/model_states",
+                    "_gripper_joint_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f6516f5c0>":	{
+                            "data_class":	"Float64MultiArray",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f6516f630>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517e0a0>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519af30>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f6516fb70>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f6511c060>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f6516fc50>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f6515deb8>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f6515deb8>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f6515db70>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f6516fbe0>":	{
+                                                        "_fileno":	23,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/gazebo",
+                                                        "header":	null,
+                                                        "id":	8,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/modrob1/gripper_position_controller/command",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f6516fba8>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Float64MultiArray",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/modrob1/gripper_position_controller/command"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517e0f8>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58368
+                                                        ],
+                                                        "socket":	"<socket.socket fd=23, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58368)>",
+                                                        "stat_bytes":	1690,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517e3b8>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f6515deb8>",
+                                                "_queue":	[],
+                                                "_queue_size":	10,
+                                                "_thread":	{
+                                                    "<Thread(Thread-12, started daemon 140184981075712)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184981075712,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-12",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f651780f0>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f6515dd78>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f6515dd78>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f6515df30>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Float64MultiArray",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/modrob1/gripper_position_controller/command",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ade0>",
+                                    "queue_size":	10,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/modrob1/gripper_position_controller/command",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"std_msgs/Float64MultiArray"
+                                }
+                            },
+                            "md5sum":	"4b7d974086d4060e7db4613a7e6c3ba4",
+                            "name":	"/modrob1/gripper_position_controller/command",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/modrob1/gripper_position_controller/command",
+                            "type":	"std_msgs/Float64MultiArray"
+                        }
+                    },
+                    "_human_joint_sensor_topic":	"/human_joint_pos",
+                    "_human_play_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f6516f160>":	{
+                            "data_class":	"Bool",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f6516fa90>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517ea98>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f0f0>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f65178240>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f65129078>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f65178470>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f65127170>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f65127170>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f65127378>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f65178b70>":	{
+                                                        "_fileno":	39,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/gazebo",
+                                                        "header":	null,
+                                                        "id":	16,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/actor/start_stop_cmd",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f65178a58>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Bool",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/actor/start_stop_cmd"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517e8e0>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58498
+                                                        ],
+                                                        "socket":	"<socket.socket fd=39, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58498)>",
+                                                        "stat_bytes":	172,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517ea40>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f65127170>",
+                                                "_queue":	[],
+                                                "_queue_size":	100,
+                                                "_thread":	{
+                                                    "<Thread(Thread-21, started daemon 140184930719488)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184930719488,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-21",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f65140128>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f651273f0>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f651273f0>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f65127440>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Bool",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/actor/start_stop_cmd",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f120>",
+                                    "queue_size":	100,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/actor/start_stop_cmd",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"std_msgs/Bool"
+                                }
+                            },
+                            "md5sum":	"8b94c1b53db61fb6aed406028ad6332a",
+                            "name":	"/actor/start_stop_cmd",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/actor/start_stop_cmd",
+                            "type":	"std_msgs/Bool"
+                        }
+                    },
+                    "_human_pose_shift_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f65178d30>":	{
+                            "data_class":	"Pose",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f65178518>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f950cbdb0>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519af60>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f651789b0>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f65129048>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f65178b38>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f651273c8>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f651273c8>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f65127238>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f65178278>":	{
+                                                        "_fileno":	30,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/gazebo",
+                                                        "header":	null,
+                                                        "id":	14,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/actor/pose_cmd",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f651786d8>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Pose",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/actor/pose_cmd"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517e150>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58494
+                                                        ],
+                                                        "socket":	"<socket.socket fd=30, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58494)>",
+                                                        "stat_bytes":	692,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517e200>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f651273c8>",
+                                                "_queue":	[],
+                                                "_queue_size":	100,
+                                                "_thread":	{
+                                                    "<Thread(Thread-19, started daemon 140184939112192)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184939112192,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-19",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f651400b8>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f651272b0>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f651272b0>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f651270d0>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Pose",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/actor/pose_cmd",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f030>",
+                                    "queue_size":	100,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/actor/pose_cmd",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"geometry_msgs/Pose"
+                                }
+                            },
+                            "md5sum":	"e45d45a5a1ce597b249e23fb30fc871f",
+                            "name":	"/actor/pose_cmd",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/actor/pose_cmd",
+                            "type":	"geometry_msgs/Pose"
+                        }
+                    },
+                    "_human_script_time_publisher":	{
+                        "<rospy.topics.Publisher object at 0x7f7f65178978>":	{
+                            "data_class":	"Float64",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7f65178e10>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517e4c0>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f090>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f65178668>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f65129648>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[
+                                        {
+                                            "<rospy.impl.tcpros_pubsub.QueuedConnection object at 0x7f7f651402e8>":	{
+                                                "_cond_data_available":	{
+                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f65127350>, 1)>":	{
+                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f65127350>",
+                                                        "_waiters":	"deque([<locked _thread.lock object at 0x7f7f65127468>])",
+                                                        "acquire":	"acquire",
+                                                        "release":	"release"
+                                                    }
+                                                },
+                                                "_connection":	{
+                                                    "<rospy.impl.tcpros_base.TCPROSTransport object at 0x7f7f65140198>":	{
+                                                        "_fileno":	38,
+                                                        "callerid_pub":	"unknown",
+                                                        "cleanup_cb":	"cleanup_cb_wrapper",
+                                                        "dest_address":	null,
+                                                        "direction":	"o",
+                                                        "done":	false,
+                                                        "endpoint_id":	"/gazebo",
+                                                        "header":	null,
+                                                        "id":	15,
+                                                        "is_latched":	false,
+                                                        "latch":	null,
+                                                        "local_endpoint":	[
+                                                            "127.0.1.1",
+                                                            41617
+                                                        ],
+                                                        "md5sum":	null,
+                                                        "name":	"/actor/script_time_cmd",
+                                                        "protocol":	{
+                                                            "<rospy.impl.tcpros_pubsub.TCPROSPub object at 0x7f7f65140160>":	{
+                                                                "buff_size":	128,
+                                                                "direction":	"o",
+                                                                "headers":	{},
+                                                                "is_latch":	false,
+                                                                "pub_data_class":	"Float64",
+                                                                "queue_size":	null,
+                                                                "recv_data_class":	null,
+                                                                "resolved_name":	"/actor/script_time_cmd"
+                                                            }
+                                                        },
+                                                        "read_buff":	"<_io.BytesIO object at 0x7f7f6517ed58>",
+                                                        "remote_endpoint":	[
+                                                            "127.0.0.1",
+                                                            58496
+                                                        ],
+                                                        "socket":	"<socket.socket fd=38, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.1.1', 41617), raddr=('127.0.0.1', 58496)>",
+                                                        "stat_bytes":	179,
+                                                        "stat_num_msg":	0,
+                                                        "type":	null,
+                                                        "write_buff":	"<_io.BytesIO object at 0x7f7f6517eeb8>"
+                                                    }
+                                                },
+                                                "_error":	null,
+                                                "_lock":	"<unlocked _thread.lock object at 0x7f7f65127350>",
+                                                "_queue":	[],
+                                                "_queue_size":	100,
+                                                "_thread":	{
+                                                    "<Thread(Thread-20, started daemon 140184955897600)>":	{
+                                                        "_args":	[],
+                                                        "_daemonic":	true,
+                                                        "_ident":	140184955897600,
+                                                        "_initialized":	true,
+                                                        "_is_stopped":	false,
+                                                        "_kwargs":	{},
+                                                        "_name":	"Thread-20",
+                                                        "_started":	{
+                                                            "<threading.Event object at 0x7f7f65140208>":	{
+                                                                "_cond":	{
+                                                                    "<Condition(<unlocked _thread.lock object at 0x7f7f65127210>, 0)>":	{
+                                                                        "_lock":	"<unlocked _thread.lock object at 0x7f7f65127210>",
+                                                                        "_waiters":	"deque([])",
+                                                                        "acquire":	"acquire",
+                                                                        "release":	"release"
+                                                                    }
+                                                                },
+                                                                "_flag":	true
+                                                            }
+                                                        },
+                                                        "_stderr":	{
+                                                            "<_io.TextIOWrapper name='<stderr>' mode='w' encoding='UTF-8'>":	{
+                                                                "mode":	"w"
+                                                            }
+                                                        },
+                                                        "_target":	"_run",
+                                                        "_tstate_lock":	"<locked _thread.lock object at 0x7f7f651273a0>"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "data_class":	"Float64",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/actor/script_time_cmd",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6512f060>",
+                                    "queue_size":	100,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/actor/script_time_cmd",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"std_msgs/Float64"
+                                }
+                            },
+                            "md5sum":	"fdb28210bfa9d7c91146260178d9a584",
+                            "name":	"/actor/script_time_cmd",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/actor/script_time_cmd",
+                            "type":	"std_msgs/Float64"
+                        }
+                    },
+                    "_joint_states_topic":	"/modrob1/joint_states",
+                    "action_norm":	"[[0.  0.4]\n [0.  0.4]\n [0.  0.4]\n [0.  0.4]\n [0.  0.4]\n [0.  0.4]]",
+                    "action_space":	{
+                        "Box([-1. -1. -1. -1. -1. -1.], [1. 1. 1. 1. 1. 1.], (6,), float32)":	{
+                            "_np_random":	null,
+                            "bounded_above":	"[ True  True  True  True  True  True]",
+                            "bounded_below":	"[ True  True  True  True  True  True]",
+                            "dtype":	"float32",
+                            "high":	"[1. 1. 1. 1. 1. 1.]",
+                            "low":	"[-1. -1. -1. -1. -1. -1.]",
+                            "shape":	[
+                                6
+                            ]
+                        }
+                    },
+                    "base_pose":	"position: \n  x: -0.24999787129660175\n  y: -3.2971669677787745e-06\n  z: 0.770002167267799\norientation: \n  x: -9.735711183153154e-06\n  y: -8.368879990107074e-06\n  z: 4.853301513804774e-06\n  w: 0.9999999999058117",
+                    "capsules":	[
+                        "Capsule",
+                        "Capsule",
+                        "Capsule",
+                        "Capsule",
+                        "Capsule",
+                        "Capsule"
+                    ],
+                    "collision_penalty":	-1,
+                    "controllers_list":	[],
+                    "controllers_object":	{
+                        "<openai_ros.controllers_connection.ControllersConnection object at 0x7f7f6516f9b0>":	{
+                            "controllers_list":	[],
+                            "switch_service":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516f668>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516f2b0>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"SwitchControllerResponse",
+                                            "resolved_name":	"/controller_manager/switch_controller",
+                                            "service_class":	"SwitchController"
+                                        }
+                                    },
+                                    "request_class":	"SwitchControllerRequest",
+                                    "resolved_name":	"/controller_manager/switch_controller",
+                                    "response_class":	"SwitchControllerResponse",
+                                    "seq":	0,
+                                    "service_class":	"SwitchController",
+                                    "transport":	null,
+                                    "uri":	null
+                                }
+                            },
+                            "switch_service_name":	"//controller_manager/switch_controller"
+                        }
+                    },
+                    "critical_collision_penalty":	-1,
+                    "cumulated_episode_reward":	0,
+                    "cumulated_steps":	0.0,
+                    "distance_penalty_orientation":	0.0,
+                    "distance_penalty_position":	0.0,
+                    "episode_num":	0,
+                    "gazebo":	{
+                        "<openai_ros.gazebo_connection.GazeboConnection object at 0x7f7f929ad2e8>":	{
+                            "_max_retry":	20,
+                            "pause":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516f4e0>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516f470>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"EmptyResponse",
+                                            "resolved_name":	"/gazebo/pause_physics",
+                                            "service_class":	"Empty"
+                                        }
+                                    },
+                                    "request_class":	"EmptyRequest",
+                                    "resolved_name":	"/gazebo/pause_physics",
+                                    "response_class":	"EmptyResponse",
+                                    "seq":	3,
+                                    "service_class":	"Empty",
+                                    "transport":	null,
+                                    "uri":	"rosrpc://skynet:49937"
+                                }
+                            },
+                            "reset_simulation_proxy":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516f748>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516fa58>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"EmptyResponse",
+                                            "resolved_name":	"/gazebo/reset_simulation",
+                                            "service_class":	"Empty"
+                                        }
+                                    },
+                                    "request_class":	"EmptyRequest",
+                                    "resolved_name":	"/gazebo/reset_simulation",
+                                    "response_class":	"EmptyResponse",
+                                    "seq":	0,
+                                    "service_class":	"Empty",
+                                    "transport":	null,
+                                    "uri":	null
+                                }
+                            },
+                            "reset_world_or_sim":	"WORLD",
+                            "reset_world_proxy":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516fdd8>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516f8d0>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"EmptyResponse",
+                                            "resolved_name":	"/gazebo/reset_world",
+                                            "service_class":	"Empty"
+                                        }
+                                    },
+                                    "request_class":	"EmptyRequest",
+                                    "resolved_name":	"/gazebo/reset_world",
+                                    "response_class":	"EmptyResponse",
+                                    "seq":	1,
+                                    "service_class":	"Empty",
+                                    "transport":	null,
+                                    "uri":	"rosrpc://skynet:49937"
+                                }
+                            },
+                            "set_physics":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f6516f7f0>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f6516f400>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"SetPhysicsPropertiesResponse",
+                                            "resolved_name":	"/gazebo/set_physics_properties",
+                                            "service_class":	"SetPhysicsProperties"
+                                        }
+                                    },
+                                    "request_class":	"SetPhysicsPropertiesRequest",
+                                    "resolved_name":	"/gazebo/set_physics_properties",
+                                    "response_class":	"SetPhysicsPropertiesResponse",
+                                    "seq":	0,
+                                    "service_class":	"SetPhysicsProperties",
+                                    "transport":	null,
+                                    "uri":	null
+                                }
+                            },
+                            "start_init_physics_parameters":	false,
+                            "unpause":	{
+                                "<rospy.impl.tcpros_service.ServiceProxy object at 0x7f7f9297cf28>":	{
+                                    "buff_size":	65536,
+                                    "persistent":	false,
+                                    "protocol":	{
+                                        "<rospy.impl.tcpros_service.TCPROSServiceClient object at 0x7f7f9297cf98>":	{
+                                            "buff_size":	65536,
+                                            "direction":	"b",
+                                            "headers":	{},
+                                            "queue_size":	null,
+                                            "recv_data_class":	"EmptyResponse",
+                                            "resolved_name":	"/gazebo/unpause_physics",
+                                            "service_class":	"Empty"
+                                        }
+                                    },
+                                    "request_class":	"EmptyRequest",
+                                    "resolved_name":	"/gazebo/unpause_physics",
+                                    "response_class":	"EmptyResponse",
+                                    "seq":	3,
+                                    "service_class":	"Empty",
+                                    "transport":	null,
+                                    "uri":	"rosrpc://skynet:49937"
+                                }
+                            }
+                        }
+                    },
+                    "gazebo_model_pose":	{
+                        "actor":	"position: \n  x: 0.8332948441324675\n  y: 0.1043361933045341\n  z: 1.0064870806335493\norientation: \n  x: -0.45974395430180676\n  y: 0.6876225703043024\n  z: 0.4823927144727075\n  w: -0.28828452319660836",
+                        "goal_pos":	"position: \n  x: 1.0\n  y: 1.0\n  z: 10.0\norientation: \n  x: 0.0\n  y: 0.0\n  z: 0.0\n  w: 1.0",
+                        "ground_plane":	"position: \n  x: 0.0\n  y: 0.0\n  z: 0.0\norientation: \n  x: 0.0\n  y: 0.0\n  z: 0.0\n  w: 1.0",
+                        "modrob1":	"position: \n  x: -0.24999533527945658\n  y: -3.7321523783909356e-06\n  z: 0.7700021137301145\norientation: \n  x: -1.1025873080503323e-05\n  y: -1.3897624376451438e-05\n  z: -4.37673647263594e-06\n  w: 0.9999999998330652",
+                        "simple_table":	"position: \n  x: 0.0\n  y: 0.0\n  z: 0.0\norientation: \n  x: 0.0\n  y: 0.0\n  z: 0.0\n  w: 1.0",
+                        "start_pos":	"position: \n  x: 1.0\n  y: 1.0\n  z: 10.0\norientation: \n  x: 0.0\n  y: 0.0\n  z: 0.0\n  w: 1.0"
+                    },
+                    "gazebo_model_twist":	{
+                        "actor":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0",
+                        "goal_pos":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0",
+                        "ground_plane":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0",
+                        "modrob1":	"linear: \n  x: -7.788754995525403e-05\n  y: 3.124212336399832e-06\n  z: -1.993536272847047e-05\nangular: \n  x: -0.00010903814929278353\n  y: 0.0004901026457722751\n  z: 0.001271459982611134",
+                        "simple_table":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0",
+                        "start_pos":	"linear: \n  x: 0.0\n  y: 0.0\n  z: 0.0\nangular: \n  x: 0.0\n  y: 0.0\n  z: 0.0"
+                    },
+                    "goal_arm_joint_position":	[
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "goal_error":	0.08,
+                    "goal_joint_diff":	3,
+                    "goal_reward":	0,
+                    "gripper1_max":	0.01,
+                    "gripper1_min":	0,
+                    "gripper2_max":	0.04,
+                    "gripper2_min":	0.03,
+                    "gripper_max_delta":	0.003,
+                    "human_joint_meas_ids":	[
+                        8,
+                        17,
+                        2
+                    ],
+                    "human_joint_pos":	[
+                        [
+                            0.591923934128318,
+                            0.4214902710326502,
+                            1.1866833106468977
+                        ],
+                        [
+                            0.3331779968985617,
+                            0.41900493670651245,
+                            1.1079677397559524
+                        ],
+                        [
+                            0.5421627824741875,
+                            0.23964883702520517,
+                            1.666822803011607
+                        ]
+                    ],
+                    "human_motion_pos_random":	0.2,
+                    "human_motion_time_random":	1,
+                    "init_arm_joint_position":	[
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0,
+                        0.0
+                    ],
+                    "init_error":	0.02,
+                    "is_collided":	false,
+                    "joint_max":	3.0,
+                    "joint_max_delta":	0.4,
+                    "joint_max_v":	0.8,
+                    "joint_min":	-3.0,
+                    "joint_state":	"header: \n  seq: 2503\n  stamp: \n    secs: 12\n    nsecs: 659000000\n  frame_id: ''\nname: \n  - hand_to_finger1\n  - hand_to_finger2\n  - joint0\n  - joint1\n  - joint2\n  - joint3\n  - joint4\n  - joint5\nposition: [0.0017397119147590317, 0.03489696195358965, 0.005227170095271738, 0.0022976574619342216, 0.0008106868501451814, -0.0090294907202626, -0.002887034890218132, -0.0020373580284696047]\nvelocity: [0.008157422350380328, 4.646803667673286e-06, -0.007196002194493741, 0.008178381723980792, 0.014657526121357841, 0.06904921769017061, 0.040616977542542065, -0.002553574370174393]\neffort: [-0.17181855997977508, -0.38188259495003546, -36.63119126334902, -16.097515488596947, -8.095303665083264, 18.99349161003272, 6.260655142691363, 6.118008934891783]",
+                    "joint_transforamtions":	[
+                        "[[1.  0.  0.  0. ]\n [0.  1.  0.  0. ]\n [0.  0.  1.  0.1]\n [0.  0.  0.  1. ]]",
+                        "[[-2.0510e-10  1.0000e+00  0.0000e+00  0.0000e+00]\n [ 2.0510e-10  4.2067e-20  1.0000e+00 -6.5500e-02]\n [ 1.0000e+00  2.0510e-10 -2.0510e-10  2.3620e-01]\n [ 0.0000e+00  0.0000e+00  0.0000e+00  1.0000e+00]]",
+                        "[[-2.0510e-10  1.0000e+00  0.0000e+00  4.0000e-01]\n [ 1.0000e+00  2.0510e-10  4.1021e-10  0.0000e+00]\n [ 4.1021e-10  8.4135e-20 -1.0000e+00  1.3530e-01]\n [ 0.0000e+00  0.0000e+00  0.0000e+00  1.0000e+00]]",
+                        "[[ 1.000e+00  0.000e+00  0.000e+00  1.140e-01]\n [ 0.000e+00 -2.051e-10  1.000e+00  4.700e-02]\n [ 0.000e+00 -1.000e+00 -2.051e-10  1.746e-01]\n [ 0.000e+00  0.000e+00  0.000e+00  1.000e+00]]",
+                        "[[ 1.000e+00  0.000e+00  0.000e+00  0.000e+00]\n [ 0.000e+00 -2.051e-10 -1.000e+00  6.500e-02]\n [ 0.000e+00  1.000e+00 -2.051e-10  3.776e-01]\n [ 0.000e+00  0.000e+00  0.000e+00  1.000e+00]]",
+                        "[[ 2.0510e-10 -2.0510e-10  1.0000e+00 -6.0000e-02]\n [-1.0000e+00  4.1021e-10  2.0510e-10  6.3000e-02]\n [-4.1021e-10 -1.0000e+00 -2.0510e-10  6.1550e-02]\n [ 0.0000e+00  0.0000e+00  0.0000e+00  1.0000e+00]]"
+                    ],
+                    "max_goal_pos_x":	5,
+                    "max_goal_pos_y":	5,
+                    "max_goal_pos_z":	5,
+                    "min_goal_pos_x":	-5,
+                    "min_goal_pos_y":	-5,
+                    "min_goal_pos_z":	0.1,
+                    "movement_error":	0.01,
+                    "movement_timeout":	0.2,
+                    "n_actions":	6,
+                    "n_human_obs":	3,
+                    "n_observations":	32,
+                    "np_random":	"RandomState(MT19937)",
+                    "observation_id_collision":	30,
+                    "observation_id_critical_collision":	31,
+                    "observation_id_current_ee_pose":	18,
+                    "observation_id_current_joint_values":	0,
+                    "observation_id_current_joint_velocities":	12,
+                    "observation_id_goal_joint_values":	6,
+                    "observation_id_human_joints":	21,
+                    "observation_id_joints":	0,
+                    "observation_norm":	"[[-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-3.   6. ]\n [-0.8  1.6]\n [-0.8  1.6]\n [-0.8  1.6]\n [-0.8  1.6]\n [-0.8  1.6]\n [-0.8  1.6]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]\n [ 0.   1. ]]",
+                    "observation_space":	{
+                        "Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\n 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.\n 1. 1. 1. 1. 1. 1. 1. 1.], (32,), float32)":	{
+                            "_np_random":	null,
+                            "bounded_above":	"[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+                            "bounded_below":	"[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+                            "dtype":	"float32",
+                            "high":	"[1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.\n 1. 1. 1. 1. 1. 1. 1. 1.]",
+                            "low":	"[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\n 0. 0. 0. 0. 0. 0. 0. 0.]",
+                            "shape":	[
+                                32
+                            ]
+                        }
+                    },
+                    "reset_controls":	false,
+                    "reward_pub":	{
+                        "<rospy.topics.Publisher object at 0x7f7ffa935710>":	{
+                            "data_class":	"RLExperimentInfo",
+                            "impl":	{
+                                "<rospy.topics._PublisherImpl object at 0x7f7ffa935780>":	{
+                                    "buff":	"<_io.BytesIO object at 0x7f7f6517eca8>",
+                                    "c_lock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ac30>",
+                                    "closed":	false,
+                                    "connection_poll":	{
+                                        "<rospy.topics.Poller object at 0x7f7f6516f358>":	{
+                                            "add_fd":	"add_epoll",
+                                            "error_iter":	"error_epoll_iter",
+                                            "poller":	"<select.epoll object at 0x7f7f65224b70>",
+                                            "remove_fd":	"remove_epoll"
+                                        }
+                                    },
+                                    "connections":	[],
+                                    "data_class":	"RLExperimentInfo",
+                                    "handler":	null,
+                                    "headers":	{},
+                                    "is_latch":	false,
+                                    "latch":	null,
+                                    "message_data_sent":	0,
+                                    "name":	"/openai/reward",
+                                    "publock":	"<unlocked _thread.RLock object owner=0 count=0 at 0x7f7f6519ac90>",
+                                    "queue_size":	1,
+                                    "ref_count":	1,
+                                    "resolved_name":	"/openai/reward",
+                                    "seq":	0,
+                                    "subscriber_listeners":	[],
+                                    "type":	"openai_ros/RLExperimentInfo"
+                                }
+                            },
+                            "md5sum":	"117729220546455cc216a7df0b6e91d0",
+                            "name":	"/openai/reward",
+                            "reg_type":	"pub",
+                            "resolved_name":	"/openai/reward",
+                            "type":	"openai_ros/RLExperimentInfo"
+                        }
+                    },
+                    "reward_range":	[
+                        -Infinity,
+                        Infinity
+                    ],
+                    "robot_name_":	"modrob1",
+                    "robot_name_space":	"",
+                    "ros_ws_abspath":	"/home/thummj/catkin_ws/",
+                    "safety_distance_ground":	0.03,
+                    "spec":	{
+                        "EnvSpec(ModRobSafeHumanEnv-v0)":	{
+                            "_env_name":	"ModRobSafeHumanEnv",
+                            "_kwargs":	{},
+                            "entry_point":	"openai_ros.task_envs.human_modrob.modrob_safe_human:ModRobSafeHumanEnv",
+                            "id":	"ModRobSafeHumanEnv-v0",
+                            "max_episode_steps":	10000,
+                            "nondeterministic":	false,
+                            "reward_threshold":	null,
+                            "timestep_limit":	100
+                        }
+                    },
+                    "time_penalty":	-1,
+                    "tool_transformation":	"[[1.      0.      0.      0.     ]\n [0.      1.      0.      0.     ]\n [0.      0.      1.      0.11955]\n [0.      0.      0.      1.     ]]",
+                    "use_delta_actions":	true,
+                    "use_goal_randomization":	true
+                }
+            },
+            "metadata":	{
+                "render.modes":	[]
+            },
+            "observation_space":	{
+                "Box([0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\n 0. 0. 0. 0. 0. 0. 0. 0.], [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.\n 1. 1. 1. 1. 1. 1. 1. 1.], (32,), float32)":	{
+                    "_np_random":	null,
+                    "bounded_above":	"[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+                    "bounded_below":	"[ True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True  True  True  True  True\n  True  True  True  True  True  True  True  True]",
+                    "dtype":	"float32",
+                    "high":	"[1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.\n 1. 1. 1. 1. 1. 1. 1. 1.]",
+                    "low":	"[0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.\n 0. 0. 0. 0. 0. 0. 0. 0.]",
+                    "shape":	[
+                        32
+                    ]
+                }
+            },
+            "reward_range":	[
+                -Infinity,
+                Infinity
+            ]
+        }
+    },
+    "update_after":	1000,
+    "update_every":	200
+}
