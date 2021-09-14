@@ -1,0 +1,24 @@
+<launch>
+  <rosparam file = "$(find failsafe_planner)/config/parameters.yaml" />
+  <rosparam file = "$(find human_reachability_analysis)/config/sensors_parameters.yaml" />
+  <rosparam file = "$(find robot_reachability_analysis)/config/robot_parameters.yaml" />
+  <rosparam file="$(find my_schunk_control)/config/schunk_control.yaml"/>
+
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet" args="manager" output="screen"/>
+  
+  <node pkg="nodelet" type="nodelet" name="FailSafeNodelet" args="load failsafe/FailSafeNodelet standalone_nodelet" output="log"/>
+  <node pkg="nodelet" type="nodelet" name="HumanRANodelet" args="load human_ra/HumanRANodelet standalone_nodelet" output="log"/>
+  <node pkg="nodelet" type="nodelet" name="RobotRANodelet" args="load robot_ra/RobotRANodelet standalone_nodelet" output="log"/>
+  <node pkg="nodelet" type="nodelet" name="IntersectionChecker" args="load intersection_checker/IntersectionChecker standalone_nodelet" output="log"/>
+  <node pkg="nodelet" type="nodelet" name="Selector" args="load selector/Selector standalone_nodelet"/>	
+
+
+
+
+  <!-- RVIZ -->
+
+  <node name="rviz_marker_node" type="rviz_marker_node" pkg="rviz_marker"/>
+  
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find my_schunk_control)/config/config.rviz" />
+	  
+</launch>

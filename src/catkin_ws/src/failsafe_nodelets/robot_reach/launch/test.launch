@@ -1,0 +1,10 @@
+<launch>
+<rosparam file = "$(find failsafe_consistent_planner)/config/parameters.yaml" />
+  <rosparam file = "$(find robot_reach)/config/robot_parameters.yaml" />
+
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet" args="manager" output="screen"/>
+  
+  <node pkg="nodelet" type="nodelet" name="RobotReachNodelet" args="load robot_reach/RobotReachNodelet standalone_nodelet" output="screen"/>
+<node pkg="nodelet" type="nodelet" name="FailsafeConsistentNodelet" args="load online_verification/FailsafeConsistentNodelet standalone_nodelet" output="screen"/>
+	  
+</launch>

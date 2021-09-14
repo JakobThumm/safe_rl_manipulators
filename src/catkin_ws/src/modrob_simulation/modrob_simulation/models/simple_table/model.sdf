@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+<model name="simple_table">
+  <pose>0 0 0 0 0 0</pose>
+  <link name="simple_table">
+    <visual name="visual_00">
+      <geometry>
+        <mesh>
+          <uri>file://simple_table/files/simple_table.stl</uri>
+          <scale>1 1 1</scale>
+        </mesh>
+      </geometry>
+      <material>
+        <script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Wood</name>
+        </script>
+      </material>
+    </visual>
+    <collision name="simple_table_collision">
+      <geometry>
+        <mesh>
+        <uri>file://simple_table/files/simple_table.stl</uri>
+        <scale>1 1 1</scale>
+      </mesh>
+      </geometry>
+    </collision>
+  </link>
+</model>
+</sdf>

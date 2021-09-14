@@ -1,0 +1,7 @@
+<launch>
+  
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet" args="manager" output="screen"/>
+  <rosparam file = "$(find dummy_obstacle)/config/parameters.yaml" />
+  <node pkg="nodelet" type="nodelet" name="DummyObstacleNodelet" args="load dummy_obstacle/DummyObstacleNodelet standalone_nodelet" output="screen"/>
+	  
+</launch>

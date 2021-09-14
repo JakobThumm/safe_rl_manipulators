@@ -1,0 +1,7 @@
+<library path="libverify_iso">
+  <class name="verify_iso/VerifyISONodelet" type="verify_iso::VerifyISONodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet that check if there is a risk of collision between the robot and a human
+    </description>
+  </class>
+</library>

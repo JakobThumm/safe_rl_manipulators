@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<robot name="gripper">
+	
+	
+	<link name="world"/>
+	
+    <link name="hand">
+        <inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.12200"/>
+			<mass value="0.184000"/>
+			<!--Check with values in tech sheet values in kgcm^2???-->
+			<inertia ixx="0.550000" ixy="-0.000002" ixz="-0.000003" iyy="0.930000" iyz="0.000005" izz="0.550000"/>
+		</inertial>
+        <visual>
+            <origin rpy="0.000000 -0.000000 0.000000" xyz="0.000000 0.000000 0.122000"/>
+			<geometry>
+                <mesh filename="package://modrob_simulation/stl_files/E_Schimaneck.STL"/>
+            </geometry>
+        </visual>
+        <collision>
+			<origin rpy="0.000000 -0.000000 0.000000" xyz="0.000000 0.000000 0.122000"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/E_Schimaneck.STL"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="hand">
+		<material>Gazebo/DarkGrey</material>
+	</gazebo>
+
+	<gazebo reference="hand">
+		<kp>0.000000</kp>
+		<kd>0.000000</kd>
+		<mu1>0.000000</mu1>
+		<mu2>0.000000</mu2>
+	</gazebo>
+	
+	
+	<link name="finger1">
+		<inertial>
+			<origin rpy="0.00000 0.000000 0.0" xyz="0.0000 -0.000 0.001500"/>
+			<mass value="0.006944"/>
+			<inertia ixx="0.000004629" ixy="0.000000486" ixz="0.000000972" iyy="0.000004157" iyz="0.000001389" izz="0.00000138"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.000000 0.000000 0.0" xyz="0.0000 -0.000 0.001500"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/finger_Birne_Gimatic_m.STL"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0.000000 0.000000 0.0" xyz="0.000 -0.000 0.001510"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/finger_Birne_Gimatic_m.STL"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="finger1">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+
+	<gazebo reference="finger1">
+		<kp>110.000000</kp>
+		<kd>10.000000</kd>
+		<mu1>0.380000</mu1>
+		<mu2>0.380000</mu2>
+	</gazebo>
+
+	<link name="finger2">
+		<inertial>
+			<origin rpy="0.00000 0.000000 0.0" xyz="0.000 0.00 0.001500"/>
+			<mass value="0.006944"/> <!--m=0.5*4*2*1.4cm^3 * 1.24 g/cm^3-->
+			<inertia ixx="0.000004629" ixy="0.000000486" ixz="0.000000972" iyy="0.000004157" iyz="0.000001389" izz="0.00000138"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.000000 0.000000 0.0" xyz="0.0000 0.000 0.001510"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/finger_Birne_Gimatic_m.STL"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0.000000 0.000000 0.0" xyz="0.000 0.000 0.001500"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/finger_Birne_Gimatic_m.STL"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="finger2">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+
+	<gazebo reference="finger2">
+		<kp>110.00000</kp> <!--https://www.filamentworld.de/wp-content/uploads/fact-sheets/Filamentworld_PLA_Datenblatt.pdf-->
+		<kd>10.000000</kd>
+		<mu1>0.380000</mu1> <!--https://github.com/superjamie/lazyweb/wiki/3D-Printing-Filament-Properties-->
+		<mu2>0.380000</mu2>
+	</gazebo>
+	
+	<joint name="fixed_world_link" type="fixed">
+    	<parent link="world"/>
+    	<child link="hand"/>
+  	</joint>
+	<!--
+	<joint name="fixed_hand_finger" type="fixed">
+    	<parent link="hand"/>
+    	<child link="finger1"/>
+  	</joint>
+	-->
+	
+	<joint name="hand_to_finger1" type="prismatic">
+		<origin rpy="0.000000 0.000000 +1.570796327" xyz="0.00700 -0.03200 0.12200"/>
+		<parent link="hand"/>
+		<child link="finger1"/>
+		<dynamics damping="12.590000" friction="0.400000"/>
+		<limit effort="1000.0" lower="-0.0" upper="0.0100" velocity="0.5"/> <!-- was 0.38 and 0.0 -->
+  	</joint>
+
+  	<joint name="hand_to_finger2" type="prismatic">
+		<origin rpy="0.000000 0.000000 -1.570796327" xyz="-0.00700 0.0620 0.12200"/>
+		<parent link="hand"/>
+		<child link="finger2"/>
+		<dynamics damping="12.590000" friction="0.400000"/>
+		<limit effort="1000.0" lower="0.03" upper="0.04" velocity="0.5"/>
+  	</joint>
+	
+</robot>

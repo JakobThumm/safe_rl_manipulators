@@ -1,0 +1,60 @@
+modrob: #namespace
+  joint_min: -3.141593
+  joint_max: 3.141593
+  joint_max_delta: 0.5 # Max theoretically allowed movement per execution step (in rad)
+  gripper1_min: 0
+  gripper1_max: 0.01
+  gripper2_min: 0.03
+  gripper2_max: 0.04
+  gripper_max_delta: 0.003 # Max theoretically allowed movement per execution step (in m)
+  ee_limits: # Overapproximative end effector position limits
+    max:
+      x: 1
+      y: 1
+      z: 1
+    min:
+      x: -1
+      y: -1
+      z: 0
+  use_delta_actions: True # true: Use differential position commands, false: Use absolute position commands
+
+  base_pose: # base pose
+    position:
+      x: 0
+      y: 0
+      z: 0.77
+    orientation:
+      x: 0
+      y: 0
+      z: 1
+      w: 0
+
+  movement_error: 0.02 # Precision maximum for regular movement
+  movement_timeout: 0.3 # Time waited until next movement execution
+  init_error: 0.02 # Precision for start position
+  goal_error_position: 0.075 # Precision for goal reached euclidean distance
+  goal_error_orientation: 0.15 # Precision for goal reached quaternion distance
+  goal_count_threshold: 3 # Number of steps in goal area for done flag to be set
+
+  init_joint0_position: 0
+  init_joint1_position: 0
+  init_joint2_position: 0
+  init_hand_to_finger1_position: 0
+  init_hand_to_finger2_position: 0.04
+  
+  goal_pose: # Goal pose q = [2.2, 0.5, 2]
+    position: 
+      x: 0.2194223666820786
+      y: -0.22072212283024734
+      z: 0.503862072438889
+    orientation: 
+      x: -0.24274980933036502
+      y: 0.6641328914471221
+      z: 0.18961523219579954
+      w: 0.6812092896368118
+  
+  distance_penalty_position: 0.5 # Reward penalty for position distance
+  distance_penalty_orientation: 0.025 # Reward penalty for orientation distance
+  time_penalty: 1 # Time penalty for every step
+  goal_reward: 200 # Points given when reaching the goal
+  collision_penalty: 200 # Penalty when colliding with an object

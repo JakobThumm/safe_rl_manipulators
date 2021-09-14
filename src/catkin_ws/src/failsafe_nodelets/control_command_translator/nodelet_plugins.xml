@@ -1,0 +1,7 @@
+<library path="libcontrol_command_translator">
+  <class name="control_command_translator/ControlCommandTranslatorNodelet" type="control_command_translator::ControlCommandTranslatorNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet that translates /ns/robot_config_commanded topic to /robot_name/arm_position_controller/command topic
+    </description>
+  </class>
+</library>

@@ -1,0 +1,16 @@
+modrob: #namespace
+    robot_name: modrob0
+    init_joint_position: [0.0, 0.0, 0.0]
+    task_and_robot_environment_name: 'ModRobHumanEnv-v0'
+    ros_abs_env_var: "ROBOT_RL_SIM_ROOT"
+    running_step: 0.04 # amount of time the control will be executed
+    pos_step: 0.016     # increment in position for each command
+
+    #qlearn parameters
+    alpha: 0.1
+    gamma: 0.7
+    epsilon: 0.9
+    epsilon_discount: 0.999
+    nepisodes: 1000
+    nsteps: 10000
+    running_step: 0.06 # Time for each step

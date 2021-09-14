@@ -1,0 +1,53 @@
+<launch>
+    <!-- Parameters and arguments-->
+    <arg name="build" default="false" />
+    <arg name="control" default="false" />
+    <arg name="gazebo" default="true" />
+    <arg name="no_gui" default="false"/>
+    <arg name="single_sim" default="false"/>
+    <arg name="world" default="single_modrob"/>
+    <arg name="manual" default="false"/>
+    <arg name="rep" default="true"/>
+    <arg name="modrob_simulation_package_path" default="$(find modrob_simulation)"/>
+    <param name="/use_sim_time" value="true"/>
+    <param name="modrob_simulation_package_path" value="$(arg modrob_simulation_package_path)" />
+
+    <!-- Loading parameters onto the server -->
+    <rosparam file = "$(arg modrob_simulation_package_path)/config/general_config.yaml" />
+
+    <!-- Building new robots, launch-, and config-files -->
+    <group if="$(arg build)">
+        <node name="create_urdf_and_launch_gazebo" pkg="modrob_simulation" type="create_urdf_and_launch_gazebo" output="screen" required="true"/>
+    </group>
+    
+    <!-- If the predefined single modrob simulation is desired -->
+    <group if="$(arg single_sim)">
+        <include file="$(find modrob_simulation)/launch/single_sim.launch"/>
+    </group>
+    <group unless="$(arg single_sim)">
+        <!-- If a custom simulation is desired -->
+        <group if="$(arg gazebo)">
+            <group unless="$(arg no_gui)">
+                <node name="gazebo" pkg="gazebo_ros" type="gazebo" args="$(find modrob_simulation)/gazebo/(arg world).launch" required="true" />
+            </group>
+            <!-- If only gzserver is desired -->
+            <group if="$(arg no_gui)">
+                <node name="gazebo" pkg="gazebo_ros" type="gzserver" args="$(find modrob_simulation)/gazebo/(arg world).launch" required="true" />
+            </group>
+        </group>
+    </group>
+    <!-- Launching the robots -->
+    <include file="$(find modrob_simulation)/launch/multiple_gazebo.launch">
+        <arg name="control" value="$(arg control)" />
+    </include>
+
+    <!-- Launching the republishing node; Launching manual robot control if desired and position-controllers are available -->
+    <group if="$(arg control)">
+        <group if="$(arg rep)">
+            <node name="republishing" pkg="modrob_simulation" type="republishing"/>
+        </group>
+        <group if="$(arg manual)">
+            <node name="manual_terminal" pkg="modrob_simulation" type="motion_terminal" output="screen" />
+        </group>
+    </group>
+</launch>

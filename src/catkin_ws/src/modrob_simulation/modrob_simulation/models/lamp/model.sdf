@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="lamp">
+    <static>false</static>
+    <link name="link">
+      <inertial>
+        <mass>0.023</mass>
+        <inertia>
+          <ixx>0.000009183</ixx>       
+          <ixy>0.0</ixy>         
+          <ixz>0.0</ixz>         
+          <iyy>0.000009183</iyy>       
+          <iyz>0.0</iyz>         
+          <izz>0.000007188</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision_low">
+        <pose>0 0 0 3.141592645 0 0</pose>
+        <geometry>
+          <cylinder>
+		<radius>.02</radius>
+		<length>.019</length>
+	  </cylinder>
+        </geometry>
+	<surface>
+         <friction>
+           <ode>
+             <mu>0.18</mu>
+             <mu2>0.18</mu2>
+           </ode>
+         </friction>
+      	</surface>
+      </collision>
+      <collision name="collision_top">
+        <pose>0 0 0.022 3.141592645 0 0</pose>
+        <geometry>
+          <cylinder>
+		<radius>.010</radius>
+		<length>.025</length>
+	  </cylinder>
+        </geometry>
+	<surface>
+         <friction>
+           <ode>
+             <mu>0.7</mu>
+             <mu2>0.7</mu2>
+           </ode>
+         </friction>
+      	</surface>
+      </collision>
+      <visual name="visual">
+        <pose>0 0 0 3.141592645 0 0</pose>
+        <geometry>
+          <mesh>
+	    <scale>0.8 0.8 0.8</scale>
+            <uri>model://lamp/meshes/GU10.obj</uri>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>
+
+<!-- 0.00886305 0.000043125 -->

@@ -1,0 +1,7 @@
+<library path="libfake_safety">
+  <class name="fake_safety/FakeSafetyNodelet" type="fake_safety::FakeSafetyNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet that publishes a safety information. Can be used instead of verifyISO.
+    </description>
+  </class>
+</library>

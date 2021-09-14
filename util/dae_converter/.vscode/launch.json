@@ -1,0 +1,107 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Convert stick scaled dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/home/jakob/OneDrive/Promotion/code/gazebo_projects/stick_animation_test/stick_x_animation_scaled.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert stick scaled moved dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/home/jakob/OneDrive/Promotion/code/gazebo_projects/stick_animation_test/stick_x_animation_scaled_moved.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert stick rotated dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/home/jakob/OneDrive/Promotion/code/gazebo_projects/stick_animation_test/stick_x_animation_rotated.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert stick scaled moved rotated dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/home/jakob/OneDrive/Promotion/code/gazebo_projects/stick_animation_test/stick_x_animation_scaled_moved_rotated.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert four arms dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/home/jakob/OneDrive/Promotion/code/gazebo_projects/stick_animation_test/four_arms.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert four arms scaled dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/home/jakob/OneDrive/Promotion/code/gazebo_projects/stick_animation_test/four_arms_scaled.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert four arms scaled moved rotated dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/home/jakob/OneDrive/Promotion/code/gazebo_projects/stick_animation_test/four_arms_scaled_moved_rotated.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert human scaled dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/media/jakob/74B3CF503CCBA658/OneDrive/OneDrive_TUM_Ubuntu/Promotion/code/gazebo_projects/human_cmu/human_scaled.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert human scaled moved dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/media/jakob/74B3CF503CCBA658/OneDrive/OneDrive_TUM_Ubuntu/Promotion/code/gazebo_projects/human_cmu/human_scaled_moved.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert human scaled moved rotated dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/media/jakob/74B3CF503CCBA658/OneDrive/OneDrive_TUM_Ubuntu/Promotion/code/gazebo_projects/human_cmu/human_scaled_moved_rotated.dae",
+                    "--fix_dae_file", "True"]
+        },
+        {
+            "name": "Convert human dancing dae",
+            "type": "python",
+            "request": "launch",
+            "program": "convert_dae_to_gazebo.py",
+            "console": "integratedTerminal",
+            "args": ["--dae_path", "/media/jakob/74B3CF503CCBA658/OneDrive/OneDrive_TUM_Ubuntu/Promotion/code/gazebo_projects/human_cmu/human_dancing.dae",
+                    "--fix_dae_file", "True"]
+        }
+    ]
+}

@@ -1,0 +1,543 @@
+<sdf version='1.6'>
+  <model name='modrob'>
+    <link name='part0'>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.00018 0.00013 0.1543 0 -0 0</pose>
+        <mass>2.795</mass>
+        <inertia>
+          <ixx>0.014</ixx>
+          <ixy>-2e-06</ixy>
+          <ixz>-3e-06</ixz>
+          <iyy>0.014</iyy>
+          <iyz>5e-06</iyz>
+          <izz>0.000732</izz>
+        </inertia>
+      </inertial>
+      <collision name='part0_collision'>
+        <pose frame=''>0 0 0.1 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/B_simple.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>0</kp>
+              <kd>0</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='part0_fixed_joint_lump__part1_collision_1'>
+        <pose frame=''>0 0 0.2353 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/MXL.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>10000</kp>
+              <kd>10</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='part0_visual'>
+        <pose frame=''>0 0 0.1 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/B_simple.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='part0_fixed_joint_lump__part1_visual_1'>
+        <pose frame=''>0 0 0.2353 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/MXL.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='fixed' type='fixed'>
+      <child>part0</child>
+      <parent>world</parent>
+    </joint>
+    <link name='part2'>
+      <pose frame=''>0 0 0.16765 0 -0 0</pose>
+      <inertial>
+        <pose frame=''>0.000813 -0.016157 0.128745 0 -0 0</pose>
+        <mass>3.30921</mass>
+        <inertia>
+          <ixx>0.0288105</ixx>
+          <ixy>1.09847e-05</ixy>
+          <ixz>-3.77317e-05</ixz>
+          <iyy>0.019533</iyy>
+          <iyz>-0.000554774</iyz>
+          <izz>0.0101341</izz>
+        </inertia>
+      </inertial>
+      <collision name='part2_fixed_joint_lump__part3_collision'>
+        <pose frame=''>0 -0.0655 0.16855 -3.14159 -1.57079 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/L_Rasmus_01_90_LL.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>0</kp>
+              <kd>0</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='part2_fixed_joint_lump__part4_collision_1'>
+        <pose frame=''>0 0.0621 0.16855 -3.14159 -1.57079 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/ML.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>10000</kp>
+              <kd>10</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='part2_fixed_joint_lump__part3_visual'>
+        <pose frame=''>0 -0.0655 0.16855 -3.14159 -1.57079 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/L_Rasmus_01_90_LL.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='part2_fixed_joint_lump__part4_visual_1'>
+        <pose frame=''>0 0.0621 0.16855 -3.14159 -1.57079 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/ML.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='joint0' type='revolute'>
+      <child>part2</child>
+      <parent>part0</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>205.92</effort>
+          <velocity>1.57</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.65</damping>
+          <friction>6.243</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='part5'>
+      <pose frame=''>0 -0.0017 0.3362 -0.785403 -1.57079 -0.785403</pose>
+      <inertial>
+        <pose frame=''>0.076386 0.20289 0.046353 0 -0 0</pose>
+        <mass>4.22857</mass>
+        <inertia>
+          <ixx>0.195591</ixx>
+          <ixy>0.0655537</ixy>
+          <ixz>-0.0056167</ixz>
+          <iyy>0.157465</iyy>
+          <iyz>0.0282482</iyz>
+          <izz>0.211042</izz>
+        </inertia>
+      </inertial>
+      <collision name='part5_fixed_joint_lump__part6_collision'>
+        <pose frame=''>0 0.4 0.0638 3.14159 0 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/L_360_400_LL_actual.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>0</kp>
+              <kd>0</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='part5_fixed_joint_lump__part7_collision_1'>
+        <pose frame=''>0 0.4 -0.0638 -3.14159 0 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/ML.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>10000</kp>
+              <kd>10</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='part5_fixed_joint_lump__part6_visual'>
+        <pose frame=''>0 0.4 0.0638 3.14159 0 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/L_360_400_LL_actual.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='part5_fixed_joint_lump__part7_visual_1'>
+        <pose frame=''>0 0.4 -0.0638 -3.14159 0 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/ML.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='joint1' type='revolute'>
+      <child>part5</child>
+      <parent>part2</parent>
+      <axis>
+        <xyz>1e-06 1 -0</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>106.56</effort>
+          <velocity>1.57</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.65</damping>
+          <friction>6.243</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='part8'>
+      <pose frame=''>0.4 -0.0017 0.3362 -2.76096 1.57079 1.95142</pose>
+      <inertial>
+        <pose frame=''>0.093831 0.113338 0.056098 0 -0 0</pose>
+        <mass>3.31864</mass>
+        <inertia>
+          <ixx>0.0890961</ixx>
+          <ixy>0.0355221</ixy>
+          <ixz>-0.00226069</ixz>
+          <iyy>0.140022</iyy>
+          <iyz>0.0148343</iyz>
+          <izz>0.102999</izz>
+        </inertia>
+      </inertial>
+      <collision name='part8_fixed_joint_lump__part9_collision'>
+        <pose frame=''>0 0.3 0.0638 3.14159 0 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/L_360_300_LS_actual.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>0</kp>
+              <kd>0</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='part8_fixed_joint_lump__part10_collision_1'>
+        <pose frame=''>0 0.3 -0.05575 -3.14159 0 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/MS.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>10000</kp>
+              <kd>10</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0.2</mu>
+              <mu2>0.2</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='part8_fixed_joint_lump__part9_visual'>
+        <pose frame=''>0 0.3 0.0638 3.14159 0 3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/L_360_300_LS_actual.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <visual name='part8_fixed_joint_lump__part10_visual_1'>
+        <pose frame=''>0 0.3 -0.05575 -3.14159 0 -3.14159</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/MS.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Blue</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='joint2' type='revolute'>
+      <child>part8</child>
+      <parent>part5</parent>
+      <axis>
+        <xyz>-1e-06 -1 1e-06</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>106.56</effort>
+          <velocity>1.57</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.65</damping>
+          <friction>6.243</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <link name='part11'>
+      <pose frame=''>0.7 -0.005726 0.3362 -0.245083 -1.57079 -1.32571</pose>
+      <inertial>
+        <pose frame=''>-1e-05 -2e-06 0.046109 0 -0 0</pose>
+        <mass>1.2894</mass>
+        <inertia>
+          <ixx>0.00101015</ixx>
+          <ixy>-7.90048e-11</ixy>
+          <ixz>-6.01325e-07</ixz>
+          <iyy>0.00101015</iyy>
+          <iyz>-1.09332e-07</iyz>
+          <izz>0.000192</izz>
+        </inertia>
+      </inertial>
+      <collision name='part11_fixed_joint_lump__part12_collision'>
+        <pose frame=''>0 0.09 0.091775 -3.14159 -1.57079 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/E_Schunk.STL</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <kp>0</kp>
+              <kd>0</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='part11_fixed_joint_lump__part12_visual'>
+        <pose frame=''>0 0.09 0.091775 -3.14159 -1.57079 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://modrob_simulation/stl_files/E_Schunk.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <name>Gazebo/Grey</name>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+          </script>
+        </material>
+      </visual>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <velocity_decay/>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+    <joint name='joint3' type='revolute'>
+      <child>part11</child>
+      <parent>part8</parent>
+      <axis>
+        <xyz>1e-06 1 -1e-06</xyz>
+        <limit>
+          <lower>-3.14159</lower>
+          <upper>3.14159</upper>
+          <effort>54</effort>
+          <velocity>1.57</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.65</damping>
+          <friction>6.243</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+        <use_parent_model_frame>1</use_parent_model_frame>
+      </axis>
+    </joint>
+    <static>0</static>
+    <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+      <robotNamespace>/modrob</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </model>
+</sdf>

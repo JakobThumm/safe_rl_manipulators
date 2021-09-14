@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: modrob_simulation
+    relative_path: urdf/modrob0_moveit_test.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/modrob0.srdf
+  CONFIG:
+    author_name: Jakob Thumm
+    author_email: jakob.thumm@tum.de
+    generated_timestamp: 1618572990

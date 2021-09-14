@@ -1,0 +1,57 @@
+<launch>
+	<!--This file puts one modular robot in the existing gazebo world.
+        Executed actions:
+			- Load the robot from urdf with xarco
+			- Launch the robot- and joint state publisher
+			- Spawn the robot at desired init position
+			- Launch ROS controllers
+    -->
+  <arg name="robot_name" default="modrob0" /> <!-- The robot namespace-->
+	<!-- Check wether controllers should be launched -->
+  <arg name="control" default="true" /> <!-- Enable ROS controllers-->
+	<arg name="model" default="$(find modrob_simulation)/urdf/$(arg robot_name).urdf" /> <!-- The robot description file-->
+	<arg name="gui" default="false" />
+	<!-- The robot init position-->
+	<arg name="init_x" default="0.000000" />
+	<arg name="init_y" default="0.000000" />
+	<arg name="init_z" default="0.000000" />
+	<arg name="roll" default="0.000000" />
+	<arg name="pitch" default="0.000000" />
+	<arg name="yaw" default="0.000000" />
+	<!-- The file describing all robot controllers to load-->
+	<arg name="controller_description_file" default="$(find modrob_simulation)/config/$(arg robot_name)_control.yaml"/>
+	<arg name="controller_list" default=""/>
+	<arg name="stopped_controller_list" default=""/>
+
+	<group ns="$(arg robot_name)">
+		<!-- Loading the robot model and its descriptions -->
+		<param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+		<!-- Launching robot-/joint-state-->
+		<include file="$(find modrob_simulation)/launch/modrob_move.launch" >
+			<arg name="tf_prefix" value="$(arg robot_name)_tf" />
+			<arg name="gui" value="$(arg gui)" />
+		</include>
+
+		<!-- Spawning the robot -->
+		<include file="$(find modrob_simulation)/launch/modrob.launch" >
+			<arg name="robot_name" value="$(arg robot_name)" />
+			<arg name="init_x" value="$(arg init_x)" />
+			<arg name="init_y" value="$(arg init_y)" />
+			<arg name="init_z" value="$(arg init_z)" />
+			<arg name="roll" value="$(arg roll)" />
+			<arg name="pitch" value="$(arg pitch)" />
+			<arg name="yaw" value="$(arg yaw)" />
+		</include>
+	</group>
+
+	<!-- Launching position controllers if desired -->
+	<group if="$(arg control)">
+		<include file="$(find modrob_simulation)/launch/modrob_control.launch" >
+			<arg name="name_space" value="$(arg robot_name)"/>
+			<arg name="controller_description_file" value="$(arg controller_description_file)" />
+			<arg name="controller_list" value="$(arg controller_list)"/>
+			<arg name="stopped_controller_list" value="$(arg stopped_controller_list)"/>
+		</include>
+	</group>
+</launch>

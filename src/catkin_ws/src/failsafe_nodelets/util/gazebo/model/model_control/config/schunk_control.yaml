@@ -1,0 +1,24 @@
+## joint_names
+joint_names: [arm_1_joint, arm_2_joint, arm_3_joint, arm_4_joint, arm_5_joint, arm_6_joint]
+
+##q0
+q0: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+#actors (for gazebo)
+nb_actor: 2
+
+actor_0:
+  axis: [1, 0, 0]
+  id: 0
+  pos: [-4,0]
+  speed: 2
+  begin: 2
+  end: 6
+
+actor_1: 
+  axis: [-1, 0, 0]
+  id: 1
+  pos: [4,0]
+  speed: 2
+  begin: 4
+  end: 8

@@ -1,0 +1,43 @@
+{
+    "ac_kwargs":	{
+        "hidden_sizes":	[
+            32,
+            32
+        ]
+    },
+    "actor_critic":	"MLPActorCritic",
+    "clip_ratio":	0.2,
+    "env_fn":	"<function call_experiment.<locals>.thunk_plus.<locals>.<lambda> at 0x7f4bab5e3f28>",
+    "epochs":	50,
+    "exp_name":	"installtest",
+    "gamma":	0.999,
+    "lam":	0.97,
+    "logger":	{
+        "<spinup.utils.logx.EpochLogger object at 0x7f4bab4bb390>":	{
+            "epoch_dict":	{},
+            "exp_name":	"installtest",
+            "first_row":	true,
+            "log_current_row":	{},
+            "log_headers":	[],
+            "output_dir":	"/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/spinningup/data/installtest/installtest_s0",
+            "output_file":	{
+                "<_io.TextIOWrapper name='/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/spinningup/data/installtest/installtest_s0/progress.txt' mode='w' encoding='UTF-8'>":	{
+                    "mode":	"w"
+                }
+            }
+        }
+    },
+    "logger_kwargs":	{
+        "exp_name":	"installtest",
+        "output_dir":	"/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/spinningup/data/installtest/installtest_s0"
+    },
+    "max_ep_len":	1000,
+    "pi_lr":	0.0003,
+    "save_freq":	10,
+    "seed":	0,
+    "steps_per_epoch":	4000,
+    "target_kl":	0.01,
+    "train_pi_iters":	80,
+    "train_v_iters":	80,
+    "vf_lr":	0.001
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+<model name="goal_gripper">
+  <pose>0 0 0 0 0 0</pose>
+  <link name="goal_gripper">
+    <visual name="visual_00">
+        <transparency>0.5</transparency>
+        <geometry>
+          <mesh>
+            <uri>file://start_goal/meshes/gripper_low_poly.stl</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material><script>
+          <uri>file://media/materials/scripts/gazebo.material</uri>
+          <name>Gazebo/Green</name>
+        </script></material>
+      </visual>
+    <self_collide>0</self_collide>
+    <kinematic>0</kinematic>
+    <gravity>0</gravity>
+  </link>
+</model>
+</sdf>

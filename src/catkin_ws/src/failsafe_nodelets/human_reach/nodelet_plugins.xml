@@ -1,0 +1,7 @@
+<library path="libhuman_reach">
+  <class name="human_reach/HumanReachNodelet" type="human_reach::HumanReachNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Calculates the reachability analysis of the human based on motion capture measurements.
+    </description>
+  </class>
+</library>

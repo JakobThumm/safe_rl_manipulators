@@ -1,0 +1,5 @@
+num_robots: 2
+modrob0_has_gripper: true
+modrob1_has_gripper: true
+modrob0_joint_num: 3
+modrob1_joint_num: 6

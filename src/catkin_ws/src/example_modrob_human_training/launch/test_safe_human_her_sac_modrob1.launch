@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <!-- This version uses the openai_ros environments -->
+  <rosparam command="load" file="$(find example_modrob_human_training)/config/my_modrob_safe_human_params_sac_her_modrob1_load.yaml" />
+  <!-- Launch the training system -->
+  <node pkg="example_modrob_human_training" name="modrob_human" type="start_training_sac_her.py" output="screen"/>
+</launch>

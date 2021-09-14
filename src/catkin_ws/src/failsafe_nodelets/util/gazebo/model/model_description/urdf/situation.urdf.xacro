@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+       name="lwa4p" >
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find model_description)/urdf/macros.xacro" />
+  <xacro:include filename="$(find model_description)/urdf/materials.xacro" />
+
+  <!-- schunk lwa4p -->
+  <xacro:include filename="$(find model_description)/urdf/robot.xacro" />
+
+  <!-- Used for fixing robot to Gazebo -->
+  <link name="world"/>
+
+  <!-- arm -->
+  <xacro:schunk_lwa4p name="arm" parent="world" has_podest="true">
+    <origin xyz="0 0 0.052" rpy="0 0 0" /> <!-- slightly above gazebo plane-->
+  </xacro:schunk_lwa4p>
+ 
+  <!-- sensors -->
+  <xacro:property name="sensors_data" value="${load_yaml('$(find human_cylinder)/config/sensors_parameters.yaml')}"/>
+
+  <!-- light curtains -->
+  <xacro:macro name="curtains_loop" params="N">
+    <xacro:property name="curtain" value="'curtain_${N}'"/>
+    <xacro:light_curtains id="${sensors_data[curtain]['id']}" x1="${sensors_data[curtain]['pos'][0]}" y1="${sensors_data[curtain]['pos'][1]}" x2="${sensors_data[curtain]['pos'][2]}" y2="${sensors_data[curtain]['pos'][3]}" parent="world"/>
+    <xacro:if value="${N}">
+      <xacro:curtains_loop N="${N-1}" />
+    </xacro:if>
+  </xacro:macro>
+
+  <xacro:if value="${sensors_data['nb_curtains']}">
+    <xacro:curtains_loop N="${sensors_data['nb_curtains']-1}"/>
+  </xacro:if>
+ 
+  <!-- presence sensor --> 
+  <xacro:if value="${sensors_data['nb_presence_sensors']}">
+    <xacro:presence_sensors parent="world"/>
+  </xacro:if>
+
+  <!-- laser_scanners -->
+  <xacro:macro name="scanners_loop" params="N">
+    <xacro:property name="scanner" value="'laser_scanner_${N}'"/>
+    <xacro:laser_scanners id="${sensors_data[scanner]['id']}" x="${sensors_data[scanner]['origin'][0]}" y="${sensors_data[scanner]['origin'][1]}" theta="${sensors_data[scanner]['origin'][2]}" range="${sensors_data[scanner]['range']}" parent="world"/>
+    <xacro:if value="${N}">
+      <xacro:scanners_loop N="${N-1}" />
+    </xacro:if>
+  </xacro:macro>
+
+  <!--xacro:if value="${sensors_data['nb_laser_scanners']}">
+    <xacro:scanners_loop N="${sensors_data['nb_laser_scanners']-1}"/>
+  </xacro:if-->
+</robot>

@@ -1,0 +1,7 @@
+<library path="librviz_marker">
+  <class name="rviz_marker/RvizMarkerNodelet" type="rviz_marker::RvizMarkerNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet that selects the right trajectory and sends it to the robot
+    </description>
+  </class>
+</library>

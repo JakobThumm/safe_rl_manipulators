@@ -1,0 +1,23 @@
+modrob:
+  # Publish all joint states --------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 100
+
+  # Position Controllers ------------------------------------
+  joint0_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint0
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint1_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint1
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint2_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint2
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+  joint3_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: joint3
+    pid: {p: 100.0, i: 0.01, d: 10.0}

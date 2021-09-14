@@ -1,0 +1,8 @@
+<launch>
+  <rosparam file = "$(find human_reach)/config/cmu_mocap.yaml" />
+
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet" args="manager" output="screen"/>
+  
+  <node pkg="nodelet" type="nodelet" name="HumanReachNodelet" args="load human_reach/HumanReachNodelet standalone_nodelet" output="screen"/>	
+	  
+</launch>

@@ -1,0 +1,7 @@
+<library path="libhuman_cylinder">
+  <class name="human_cylinder/HumanCylinderNodelet" type="human_cylinder::HumanCylinderNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet that computes the human reachability analysis
+    </description>
+  </class>
+</library>

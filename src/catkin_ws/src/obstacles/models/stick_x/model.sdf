@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+<actor name="actor">
+  <skin>
+    <filename>../../src/obstacles/models/stick_x/files/stick_x_animation.dae</filename>
+  </skin>
+  <animation name="fold">
+    <filename>../../src/obstacles/models/stick_x/files/stick_x_animation.dae</filename>
+  </animation>
+  <!-- Attach the plugin to this model -->
+  <plugin name="stick_plugin" filename="libstick.so"/>
+</actor>
+</sdf>

@@ -1,0 +1,28 @@
+<launch>
+    <!--This file launches th ROS controllers.
+        First, load ros controller description file to parameter server, then spawn the ROS controllers.
+        The get_controller_names.py script prints every rosparam that includes the string "controller".
+        Therefore, we spawn every controller defined in the ros controller description file.
+    -->
+
+	<!-- Determine the robot for which controllers are to be launched -->
+	<arg name="name_space" default="modrob0"/>
+	<arg name="controller_description_file" default="$(find modrob_simulation)/config/modrob0_control.yaml"/>
+	<arg name="controller_list" default=""/>
+	<arg name="stopped_controller_list" default=""/>
+	<!-- Load joint controller configurations from config.yaml to parameter-server -->
+	<rosparam file="$(arg controller_description_file)" command="load"/>
+
+	<!-- Loading the controllers -->
+  <group unless="$(eval arg('controller_list') == '')">
+	  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="$(arg name_space)" args="$(arg controller_list)"/>
+  </group>
+	<!-- Loading the stopped controllers -->
+  <group unless="$(eval arg('stopped_controller_list') == '')">
+  	<node name="controller_stopped_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="$(arg name_space)" args="--stopped $(arg stopped_controller_list)"/>
+  </group>
+	<!-- This node can stop controllers -->
+	<!-- <node name="controller_stopper" pkg="controller_stopper" type="node" respawn="false" output="screen" ns="$(arg name_space)"/> -->
+	<!-- Loading the motion publisher for this robot 
+	<node name="motion0_publisher" pkg="modrob_simulation" type="motion_publisher" args="0"/>-->
+</launch>

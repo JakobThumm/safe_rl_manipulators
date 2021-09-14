@@ -1,0 +1,98 @@
+<launch>
+  <rosparam file = "$(find failsafe_consistent_planner)/config/parameters_modrob0.yaml" />
+  <rosparam file = "$(find human_cylinder)/config/sensors_parameters.yaml" />
+  <rosparam file = "$(find robot_reach)/config/robot_parameters_modrob0.yaml" />
+  <rosparam file = "$(find control_command_translator)/config/parameters.yaml" />
+  <!--<rosparam file="$(find model_control)/config/schunk_control.yaml"/>-->
+
+  
+  <!-- Activate the parts that you want to use.-->
+  <arg name="use_failsafe_planner" default="true"/>
+  <arg name="use_failsafe_selector" default="true"/>
+  <arg name="use_robot_reach" default="true"/>
+  <arg name="use_human_reach" default="false"/>
+  <arg name="use_dummy_obs" default="true"/>
+  <arg name="use_verify_ISO" default="true"/>
+  <arg name="use_control_command_translator" default="true"/>
+  <arg name="use_rviz_plugin" default="true"/>
+  
+
+  <!-- GAZEBO -->
+  <arg name="world_file" default="$(find dummy_obstacle)/worlds/dummy_obstacle.world"/>
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="put_robot_in_world" default="true" />
+  <arg name="put_robot_in_world_package" default="$(find modrob_simulation)" />
+  <arg name="put_robot_in_world_launch" default="put_robot_in_world" />
+
+  <arg name="x" default="0.0" />
+  <arg name="y" default="0.0" />
+  <arg name="z" default="0.0" />
+  <arg name="roll" default="0.0"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="world_name" value="$(arg world_file)" />
+      <arg name="paused" value="$(arg paused)"/>
+      <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+      <arg name="gui" value="$(arg gui)"/>
+      <arg name="headless" value="$(arg headless)"/>
+      <arg name="debug" value="$(arg debug)"/>
+      <arg name="verbose" value="true" />
+  </include>
+
+  <param name="use_gui" value="$(arg gui)"/>
+
+  <group if="$(arg put_robot_in_world)">
+      <include file="$(arg put_robot_in_world_package)/launch/$(arg put_robot_in_world_launch).launch">
+          <arg name="controller_list" value="arm_position_controller gripper_position_controller"/>
+          <arg name="stopped_controller_list" value="joint_state_controller arm_controller gripper_controller"/>
+          <arg name="moveit" value="true"/>
+          <arg name="start_moveit" value="false"/>
+      </include>
+  </group>
+
+  
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet" args="manager" output="screen"/>
+  <node name="initialisation" type="initialisation_node" pkg="initialisation"/>
+  
+  <group if="$(arg use_failsafe_planner)">
+      <rosparam file = "$(find failsafe_consistent_planner)/config/parameters_modrob0.yaml" />
+      <node pkg="nodelet" type="nodelet" name="FailsafeConsistentNodelet" args="load online_verification/FailsafeConsistentNodelet standalone_nodelet" output="screen"/>
+  </group>
+  <group if="$(arg use_human_reach)">
+      <node pkg="nodelet" type="nodelet" name="HumanCylinderNodelet" args="load human_cylinder/HumanCylinderNodelet standalone_nodelet" output="screen"/>
+  </group>
+  <group unless="$(arg use_human_reach)">
+      <group if="$(arg use_dummy_obs)">
+        <rosparam file = "$(find dummy_obstacle)/config/parameters.yaml" />
+        <node pkg="nodelet" type="nodelet" name="DummyObstacleNodelet" args="load dummy_obstacle/DummyObstacleNodelet standalone_nodelet" output="screen"/>
+      </group>
+  </group>
+  <group if="$(arg use_robot_reach)">
+      <node pkg="nodelet" type="nodelet" name="RobotReachNodelet" args="load robot_reach/RobotReachNodelet standalone_nodelet" output="screen"/>
+  </group>
+  <group if="$(arg use_verify_ISO)">
+      <node pkg="nodelet" type="nodelet" name="VerifyISONodelet" args="load verify_iso/VerifyISONodelet standalone_nodelet" output="screen"/>
+  </group>
+  <group unless="$(arg use_verify_ISO)">
+      <node pkg="nodelet" type="nodelet" name="FakeSafety" args="load fake_safety/FakeSafetyNodelet standalone_nodelet" output="screen"/>	
+  </group>
+  <group if="$(arg use_failsafe_selector)">
+      <node pkg="nodelet" type="nodelet" name="safe_trajectory_selector" args="load safe_trajectory_selector/SafeTrajectorySelectorNodelet standalone_nodelet" output="screen"/>
+  </group>
+  <group if="$(arg use_control_command_translator)">
+      <rosparam file = "$(find control_command_translator)/config/parameters.yaml" />
+      <node pkg="nodelet" type="nodelet" name="ControlCommandTranslatorNodelet" args="load control_command_translator/ControlCommandTranslatorNodelet standalone_nodelet" output="screen"/>
+  </group>
+  <group if="$(arg use_rviz_plugin)">
+    <node pkg="nodelet" type="nodelet" name="RvizMarkerNodelet" args="load rviz_marker/RvizMarkerNodelet standalone_nodelet"/>
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find model_control)/config/config.rviz" />    
+  </group>
+	  
+</launch>

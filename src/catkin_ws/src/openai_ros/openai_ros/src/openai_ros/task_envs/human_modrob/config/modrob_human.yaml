@@ -1,0 +1,26 @@
+modrob: #namespace
+  joint_min: -3.141593
+  joint_max: 3.141593
+  joint_max_delta: 0.2 # Max theoretically allowed movement per execution step (in rad)
+  gripper1_min: 0
+  gripper1_max: 0.01
+  gripper2_min: 0.03
+  gripper2_max: 0.04
+  gripper_max_delta: 0.003 # Max theoretically allowed movement per execution step (in m)
+  use_delta_actions: True # true: Use differential position commands, false: Use absolute position commands
+
+  movement_error: 0.1 # Precision maximum for regular movement (can be arbitrarely small)
+  movement_timeout: 0.02 # Time waited until next movement execution
+  init_error: 0.05 # Precision for start position
+  goal_error: 0.2 # Precision for goal reached
+
+  init_joint0_position: -1
+  init_joint1_position: 0
+  init_joint2_position: 0
+  init_hand_to_finger1_position: 0
+  init_hand_to_finger2_position: 0.04
+  
+  desired_pose: 3 # Dummy pose for joint0
+  distance_reward: 0.5 # Getting closer to the reward gives positive reward
+  time_penalty: 1 # Time penalty for every step
+  goal_reward: 200 # Points given when reaching the goal

@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/devel/include/**",
+                "/opt/ros/noetic/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/control_command_translator/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/util/dummy_obstacle/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/failsafe_consistent_planner/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/util/fake_safety/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/util/global_library/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/human_cylinder/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/human_reach/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/modrob_workstation/modrob_workstation/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/util/people_detection/people_tracking_filter/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/reach_lib/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/util/reflexxesTypeIV/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/robot_reach/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/util/rviz_marker/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/simulation_time_control/include/**",
+                "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/failsafe_nodelets/verify_iso/include/**",
+                "/usr/include/**",
+                "${workspaceFolder}/src/obstacles/includes"
+            ],
+            "name": "ROS"
+        }
+    ],
+    "version": 4
+}

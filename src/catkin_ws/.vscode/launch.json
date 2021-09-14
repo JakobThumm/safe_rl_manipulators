@@ -1,0 +1,38 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+      {
+          "name": "Safe RL PPO",
+          "request": "launch",
+          "target": "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/example_modrob_human_training/launch/start_training_safe_human_ppo.launch",
+          "type": "ros"
+      },
+      {
+        "name": "Safe RL SAC",
+        "request": "launch",
+        "target": "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/example_modrob_human_training/launch/start_training_safe_human_sac.launch",
+        "type": "ros"
+      },
+      {
+        "name": "Modrob0: Safe RL SAC HER",
+        "request": "launch",
+        "target": "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/example_modrob_human_training/launch/start_training_safe_human_her_sac.launch",
+        "type": "ros"
+      },
+      {
+        "name": "Modrob1: Safe RL SAC HER",
+        "request": "launch",
+        "target": "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/example_modrob_human_training/launch/start_training_safe_human_her_sac_modrob1.launch",
+        "type": "ros"
+      },
+      {
+        "name": "Test: Modrob1: Safe RL SAC HER",
+        "request": "launch",
+        "target": "/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/example_modrob_human_training/launch/test_safe_human_her_sac_modrob1.launch",
+        "type": "ros"
+      }
+  ]
+}

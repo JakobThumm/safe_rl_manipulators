@@ -1,0 +1,546 @@
+<?xml version="1.0"?>
+<robot name="modrob0">
+
+	<link name="world"/>
+
+	<gazebo>
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<robotNamespace>/modrob0</robotNamespace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+		</plugin>
+	</gazebo>
+
+	<link name="part0">
+		<visual>
+			<origin rpy="0.000000 -0.000000 0.000000" xyz="0.000000 0.000000 0.100000"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/B_simple.STL"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 5.000000e-02"/>
+			<geometry>
+ 			<box size="1.800000e-01 1.800000e-01 1.000000e-01"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="part0">
+		<material>Gazebo/DarkGrey</material>
+	</gazebo>
+
+	<gazebo reference="part0">
+		<kp>0.000000</kp>
+		<kd>0.000000</kd>
+		<mu1>0.000000</mu1>
+		<mu2>0.000000</mu2>
+	</gazebo>
+
+	<link name="distal_link_of_joint0_NV">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.000630 0.000190 -0.009660"/>
+			<mass value="0.588000"/>
+			<inertia ixx="0.000840" ixy="0.000000" ixz="-0.000011" iyy="0.000833" iyz="-0.000001" izz="0.000732"/>
+		</inertial>
+	</link>
+
+	<gazebo reference="distal_link_of_joint0_NV">
+		<material></material>
+	</gazebo>
+
+	<gazebo reference="distal_link_of_joint0_NV">
+		<kp>0.000000</kp>
+		<kd>0.000000</kd>
+		<mu1>0.000000</mu1>
+		<mu2>0.000000</mu2>
+	</gazebo>
+
+	<link name="proximal_link_of_joint0">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.000180 0.000130 0.054300"/>
+			<mass value="2.795000"/>
+			<inertia ixx="0.014000" ixy="-0.000002" ixz="-0.000003" iyy="0.014000" iyz="0.000005" izz="0.000732"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.000000 -0.000000 0.000000" xyz="0.000000 0.000000 0.135300"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/MXL_low_poly.STL"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 5.514999e-02"/>
+			<geometry>
+ 			<box size="1.100000e-01 1.100000e-01 2.054800e-01"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="proximal_link_of_joint0">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+
+	<gazebo reference="proximal_link_of_joint0">
+		<kp>10000.000000</kp>
+		<kd>10.000000</kd>
+		<mu1>0.200000</mu1>
+		<mu2>0.200000</mu2>
+	</gazebo>
+
+	<link name="link1">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.000200 -0.036560 0.054520"/>
+			<mass value="0.581910"/>
+			<inertia ixx="0.004886" ixy="0.000007" ixz="-0.000007" iyy="0.003453" iyz="0.001714" izz="0.000000"/>
+		</inertial>
+		<visual>
+			<origin rpy="2.356194 -1.570796 2.356194" xyz="0.000000 -0.065500 0.100900"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/L_Rasmus_01_90_LL_low_poly.STL"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="2.356194e+00 -1.570796e+00 2.356194e+00" xyz="2.594479e-08 -4.366005e-02 8.128230e-02"/>
+			<geometry>
+ 			<box size="1.625646e-01 1.235962e-01 2.036799e-01"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="link1">
+		<material>Gazebo/DarkGrey</material>
+	</gazebo>
+
+	<gazebo reference="link1">
+		<kp>0.000000</kp>
+		<kd>0.000000</kd>
+		<mu1>0.000000</mu1>
+		<mu2>0.000000</mu2>
+	</gazebo>
+
+
+
+	<link name="distal_link_of_joint1_NV">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.000630 0.000190 -0.009660"/>
+			<mass value="0.588000"/>
+			<inertia ixx="0.000840" ixy="0.000000" ixz="-0.000011" iyy="0.000833" iyz="-0.000001" izz="0.000732"/>
+		</inertial>
+	</link>
+
+	<gazebo reference="distal_link_of_joint1_NV">
+		<material></material>
+	</gazebo>
+
+	<gazebo reference="distal_link_of_joint1_NV">
+		<kp>0.000000</kp>
+		<kd>0.000000</kd>
+		<mu1>0.000000</mu1>
+		<mu2>0.000000</mu2>
+	</gazebo>
+
+	<link name="proximal_link_of_joint1">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.000180 0.000130 0.054300"/>
+			<mass value="2.795000"/>
+			<inertia ixx="0.014000" ixy="0.000002" ixz="0.000003" iyy="0.014000" iyz="-0.000005" izz="0.000732"/>
+		</inertial>
+		<visual>
+			<origin rpy="3.141593 -3.141593 1.570796" xyz="0.000000 0.000000 0.135300"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/MXL+90_low_poly.STL"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="3.464102e-07 3.464102e-07 -1.570797e+00" xyz="2.776479e-08 2.776477e-08 5.514999e-02"/>
+			<geometry>
+ 			<box size="1.100000e-01 1.100000e-01 2.054800e-01"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="proximal_link_of_joint1">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+
+	<gazebo reference="proximal_link_of_joint1">
+		<kp>10000.000000</kp>
+		<kd>10.000000</kd>
+		<mu1>0.200000</mu1>
+		<mu2>0.200000</mu2>
+	</gazebo>
+
+
+
+	<link name="link2">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.196128 0.000005 0.044778"/>
+			<mass value="1.591660"/>
+			<inertia ixx="0.005537" ixy="-0.000002" ixz="-0.014137" iyy="0.093690" iyz="-0.000001" izz="0.000000"/>
+		</inertial>
+
+		<visual>
+			<origin rpy="-3.141593 -0.000000 0.000000" xyz="0.350000 0.000000 0.000000"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/L_360_350_LS_low_poly.STL"/>
+			</geometry>
+		</visual>
+
+		<collision>
+			<origin rpy="3.141592e+00 0 0" xyz="1.689997e-01 2.202507e-06 4.550000e-02"/>
+			<geometry>
+ 			<box size="4.499994e-01 1.119922e-01 9.100000e-02"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="link2">
+		<material>Gazebo/DarkGrey</material>
+	</gazebo>
+
+	<gazebo reference="link2">
+		<kp>0.000000</kp>
+		<kd>0.000000</kd>
+		<mu1>0.000000</mu1>
+		<mu2>0.000000</mu2>
+	</gazebo>
+
+
+
+	<link name="tool_dummy">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.000610 0.000080 0.047140"/>
+			<mass value="0.000000"/>
+			<inertia ixx="0.000000" ixy="0.000000" ixz="0.000000" iyy="0.000000" iyz="0.000000" izz="0.000000"/>
+		</inertial>
+	</link>
+
+	<gazebo reference="tool_dummy">
+		<material></material>
+	</gazebo>
+
+	<gazebo reference="tool_dummy">
+		<kp>0.000000</kp>
+		<kd>0.000000</kd>
+		<mu1>0.000000</mu1>
+		<mu2>0.000000</mu2>
+	</gazebo>
+
+	<link name="distal_link_of_joint2_NV">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="-0.000044 -0.000008 -0.001115"/>
+			<mass value="0.289400"/>
+			<inertia ixx="0.000178" ixy="-0.000000" ixz="-0.000000" iyy="0.000178" iyz="0.000000" izz="0.000192"/>
+		</inertial>
+	</link>
+
+	<gazebo reference="distal_link_of_joint2_NV">
+		<material></material>
+	</gazebo>
+
+	<gazebo reference="distal_link_of_joint2_NV">
+		<kp>0.000000</kp>
+		<kd>0.000000</kd>
+		<mu1>0.000000</mu1>
+		<mu2>0.000000</mu2>
+	</gazebo>
+
+	<link name="proximal_link_of_joint2">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.000610 0.000080 0.047140"/>
+			<mass value="1.253380"/>
+			<inertia ixx="0.004000" ixy="0.000000" ixz="0.000016" iyy="0.005000" iyz="-0.000000" izz="0.000192"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.000000 -0.000000 0.000000" xyz="0.000000 0.000000 0.119550"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/MS_low_poly.STL"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 4.727500e-02"/>
+			<geometry>
+ 			<box size="8.600000e-02 8.600000e-02 1.897300e-01"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="proximal_link_of_joint2">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+
+	<gazebo reference="proximal_link_of_joint2">
+		<kp>10000.000000</kp>
+		<kd>10.000000</kd>
+		<mu1>0.200000</mu1>
+		<mu2>0.200000</mu2>
+	</gazebo>
+
+	<link name="hand">
+		<inertial>
+			<origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.06250"/>
+			<mass value="0.184000"/>
+			<inertia ixx="0.550000" ixy="-0.000002" ixz="-0.000003" iyy="0.930000" iyz="0.000005" izz="0.550000"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.000000 -0.000000 0.000000" xyz="0.000000 0.000000 0.06250"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/E_Schimaneck_low_poly.STL"/>
+			</geometry>
+		</visual>
+		<collision>
+			<origin rpy="0 0 0" xyz="2.343744e-03 0 2.165501e-02"/>
+			<geometry>
+ 			<box size="8.531006e-02 8.485281e-02 1.616900e-01"/>
+			</geometry>
+		</collision>
+	</link>
+
+	<gazebo reference="hand">
+		<material>Gazebo/DarkGrey</material>
+	</gazebo>
+
+	<gazebo reference="hand">
+		<kp>0.000000</kp>
+		<kd>0.000000</kd>
+		<mu1>0.000000</mu1>
+		<mu2>0.000000</mu2>
+	</gazebo>
+
+
+
+	<link name="finger1">
+		<inertial>
+			<origin rpy="0.00000 0.000000 0.0" xyz="0.0 -0.000 0.001500"/>
+			<mass value="0.006944"/>
+			<inertia ixx="0.000004629" ixy="0.000000486" ixz="0.000000972" iyy="0.000004157" iyz="0.000001389" izz="0.00000138"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.000000 0.000000 0.0" xyz="0.0 -0.000 0.001500"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/finger_Birne_Gimatic_m_low_poly.STL"/>
+			</geometry>
+		</visual>
+		<!--
+		<collision>
+			<origin rpy="0.000000 0.000000 0.0" xyz="0.0 -0.000 0.001500"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/finger_Birne_Gimatic_m_low_poly.STL"/>
+			</geometry>
+		</collision>
+		-->
+	</link>
+
+	<gazebo reference="finger1">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+
+	<gazebo reference="finger1">
+		<kp>110.000000</kp>
+		<kd>10.000000</kd>
+		<mu1>100.00</mu1>
+		<mu2>100.00</mu2>
+	</gazebo>
+
+
+
+	<link name="finger2">
+		<inertial>
+			<origin rpy="0.00000 0.000000 0.0" xyz="0.000 0.00 0.001500"/>
+			<mass value="0.006944"/>
+			<inertia ixx="0.000004629" ixy="0.000000486" ixz="0.000000972" iyy="0.000004157" iyz="0.000001389" izz="0.00000138"/>
+		</inertial>
+		<visual>
+			<origin rpy="0.000000 0.000000 0.0" xyz="0.000 0.00 0.001500"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/finger_Birne_Gimatic_m_low_poly.STL"/>
+			</geometry>
+		</visual>
+		<!--
+		<collision>
+			<origin rpy="0.000000 0.000000 0.0" xyz="0.000 0.00 0.001500"/>
+			<geometry>
+				<mesh filename="package://modrob_simulation/stl_files/finger_Birne_Gimatic_m_low_poly.STL"/>
+			</geometry>
+		</collision>
+		-->
+	</link>
+
+	<gazebo reference="finger2">
+		<material>Gazebo/Blue</material>
+	</gazebo>
+
+	<gazebo reference="finger2">
+		<kp>110.000000</kp>
+		<kd>10.000000</kd>
+		<mu1>100.00</mu1>
+		<mu2>100.00</mu2>
+	</gazebo>
+
+
+	<joint name="fixed" type="fixed">
+		<parent link="world"/>
+		<child link="part0"/>
+	</joint>
+	<joint name="part0_joint0" type="fixed">
+		<origin xyz="0.000000 0.000000 0.100000" rpy="0.000000 -0.000000 0.000000"/>
+		<parent link="part0"/>
+		<child link="proximal_link_of_joint0"/>
+		<axis xyz="0.000000 0.000000 0.000000"/>
+		<dynamics damping="0.000000" friction="0.000000"/>
+	</joint>
+
+	<joint name="joint0_link1" type="fixed">
+		<origin xyz="0.000000 0.000000 0.135300" rpy="0.000000 -0.000000 0.000000"/>
+		<parent link="distal_link_of_joint0_NV"/>
+		<child link="link1"/>
+		<axis xyz="0.000000 0.000000 0.000000"/>
+		<dynamics damping="0.000000" friction="0.000000"/>
+	</joint>
+
+	<joint name="joint0" type="revolute">
+		<origin xyz="0.000000 0.000000 0.000000" rpy="0.000000 -0.000000 0.000000"/>
+		<parent link="proximal_link_of_joint0"/>
+		<child link="distal_link_of_joint0_NV"/>
+		<axis xyz="0.000000 0.000000 1.000000"/>
+		<dynamics damping="51.459999" friction="36.560001"/>
+		<limit effort="205.919998" velocity="1.890000" lower="-3.141593" upper="3.141593"/>
+		<sensor name="force_torque_joint0" type="force_torque">
+			<update_rate>100</update_rate>
+		</sensor>
+	</joint>
+
+	<transmission name="trans0">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="joint0">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="motor0">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>160.000000</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	<joint name="link1_joint1" type="fixed">
+		<origin xyz="0.000000 -0.065500 0.100900" rpy="2.356194 -1.570796 2.356194"/>
+		<parent link="link1"/>
+		<child link="proximal_link_of_joint1"/>
+		<axis xyz="0.000000 0.000000 0.000000"/>
+		<dynamics damping="0.000000" friction="0.000000"/>
+	</joint>
+
+	<joint name="joint1_link2" type="fixed">
+		<origin xyz="0.000000 0.000000 0.135300" rpy="3.141593 -3.141593 1.570796"/>
+		<parent link="distal_link_of_joint1_NV"/>
+		<child link="link2"/>
+		<axis xyz="0.000000 0.000000 0.000000"/>
+		<dynamics damping="0.000000" friction="0.000000"/>
+	</joint>
+
+	<joint name="joint1" type="revolute">
+		<origin xyz="0.000000 0.000000 0.000000" rpy="0.000000 -0.000000 0.000000"/>
+		<parent link="proximal_link_of_joint1"/>
+		<child link="distal_link_of_joint1_NV"/>
+		<axis xyz="0.000000 0.000000 1.000000"/>
+		<dynamics damping="51.459999" friction="36.560001"/>
+		<limit effort="205.919998" velocity="0.800000" lower="-3.141593" upper="3.141593"/>
+		<sensor name="force_torque_joint1" type="force_torque">
+			<update_rate>100</update_rate>
+		</sensor>
+	</joint>
+
+	<transmission name="trans1">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="joint1">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="motor1">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>160.000000</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	<joint name="link2_joint2" type="fixed">
+		<origin xyz="0.350000 0.000000 0.000000" rpy="-3.141593 -0.000000 0.000000"/>
+		<parent link="link2"/>
+		<child link="proximal_link_of_joint2"/>
+		<axis xyz="0.000000 0.000000 0.000000"/>
+		<dynamics damping="0.000000" friction="0.000000"/>
+	</joint>
+
+	<joint name="joint2_tool_dummy" type="fixed">
+		<origin xyz="0.000000 0.000000 0.119550" rpy="0.000000 -0.000000 0.000000"/>
+		<parent link="distal_link_of_joint2_NV"/>
+		<child link="tool_dummy"/>
+		<axis xyz="0.000000 0.000000 0.000000"/>
+		<dynamics damping="0.000000" friction="0.000000"/>
+	</joint>
+
+	<joint name="joint2" type="revolute">
+		<origin xyz="0.000000 0.000000 0.000000" rpy="0.000000 -0.000000 0.000000"/>
+		<parent link="proximal_link_of_joint2"/>
+		<child link="distal_link_of_joint2_NV"/>
+		<axis xyz="0.000000 0.000000 1.000000"/>
+		<dynamics damping="13.170000" friction="6.019000"/>
+		<limit effort="54.000000" velocity="3.050000" lower="-3.141593" upper="3.141593"/>
+		<sensor name="force_torque_joint2" type="force_torque">
+			<update_rate>100</update_rate>
+		</sensor>
+	</joint>
+
+	<transmission name="trans2">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="joint2">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="motor2">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>120.000000</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+
+	<joint name="fixed_gripper_to_arm_link" type="fixed">
+		<origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.059775"/>
+		<parent link="tool_dummy"/>
+		<child link="hand"/>
+	</joint>
+
+	<joint name="hand_to_finger1" type="prismatic">
+		<origin rpy="0.000000 0.000000 +1.570796327" xyz="0.00700 -0.03200 0.06200"/>
+		<parent link="hand"/>
+		<child link="finger1"/>
+		<dynamics damping="12.590000" friction="0.400000"/>
+		<limit effort="3.0" lower="-0.0" upper="0.0100" velocity="0.5"/> <!-- was 0.38 and 0.0 -->
+	</joint>
+
+	<joint name="hand_to_finger2" type="prismatic">
+		<origin rpy="0.000000 0.000000 -1.570796327" xyz="-0.00700 0.0620 0.06200"/>
+		<parent link="hand"/>
+		<child link="finger2"/>
+		<dynamics damping="12.590000" friction="0.400000"/>
+		<limit effort="3.0" lower="0.03" upper="0.04" velocity="0.5"/>
+	</joint>
+
+	<transmission name="trans_hand_to_finger1">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="hand_to_finger1">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="motor_hand_to_finger1">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>160</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	<transmission name="trans_hand_to_finger2">
+		<type>transmission_interface/SimpleTransmission</type>
+		<joint name="hand_to_finger2">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+		</joint>
+		<actuator name="motor_hand_to_finger2">
+			<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+			<mechanicalReduction>160</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+</robot>

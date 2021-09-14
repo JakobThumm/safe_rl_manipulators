@@ -1,0 +1,7 @@
+<library path="libfailsafe_consistent_planner">
+  <class name="online_verification/FailsafeConsistentNodelet" type="online_verification::FailsafeConsistentNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet that computes the potential trajectory using a consistent failsafe path
+    </description>
+  </class>
+</library>

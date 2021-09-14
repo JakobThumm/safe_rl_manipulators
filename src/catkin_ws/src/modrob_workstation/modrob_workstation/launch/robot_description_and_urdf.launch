@@ -1,0 +1,19 @@
+<!--
+// ===============================
+// AUTHOR       : Max Körsten (ge46hug@mytum.de)
+// CREATE DATE  : 2.11.2020
+// PURPOSE      : Launch file for workstation
+// 1) Start the robot_description_publisher node 
+// 2) Start the urdf_generator node
+// ===============================
+-->
+
+<launch>
+
+    <!-- Start the robot_description_publisher node -->
+    <node name="robot_description_publisher" pkg="modrob_workstation" type="robot_description_publisher"/>
+
+    <!-- Start the urdf_generator node -->
+    <node name="urdf_generator" pkg="modrob_workstation" type="urdf_generator"/>
+
+</launch>

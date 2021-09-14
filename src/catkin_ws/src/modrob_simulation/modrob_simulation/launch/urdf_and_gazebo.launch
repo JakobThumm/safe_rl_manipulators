@@ -1,0 +1,27 @@
+<!-- Launch file responsible for starting all nodes handling urdf creation and rviz startup -->
+<launch>
+	<!-- Specifies wether gazebo should be run after urdf-generation-->
+	<arg name="gazebo" default="true"/>
+	<param name="gazebo" type="bool" value="$(arg gazebo)"/>
+	<!-- Specifies whether a gripper  shuld be integrated -->
+	<arg name="gripper" default="false"/>
+	<param name="gripper" type="bool" value="$(arg gripper)"/>
+	<!-- Specifies wether position controllers for all robots should be initialized after urdf-generation-->
+	<arg name="control" default="true"/>
+	<param name="control" value="$(arg control)"/>
+	<!-- Specifies wether gazebo should be run without gzclient -->
+	<arg name="no_gui" default="false"/>
+	<param name="no_gui" type="bool" value="$(arg no_gui)"/>
+	<!-- Specifies the minimum distance between robot bases -->
+	<arg name="safety_distance" default="1.0"/>
+	<param name="safety_distance" type="double" value="$(arg safety_distance)"/>
+    <!-- Specifies the filename of the launch file to launch when a robot_description is recieved -->
+	<arg name="display_launch_filename" default="display_two_models_gazebo.launch"/>
+	<param name="modrob_simulation_package_path" value="$(find modrob_simulation)" />
+	<!-- Rosponsible for building a robot description based on the module order and database information -->
+	<node name="robot_description_publisher_gazebo" pkg="modrob_simulation" type="robot_description_publisher_gazebo" output="screen"/>
+	<!-- Responsible for building the urdf file based on the robot description and also [re-]starting rviz  -->
+	<node name="create_urdf_and_launch_gazebo" pkg="modrob_simulation" type="create_urdf_and_launch_gazebo" output="screen">		
+		<param name="display_launch_filename" value="$(arg display_launch_filename)" />
+	</node>
+</launch>

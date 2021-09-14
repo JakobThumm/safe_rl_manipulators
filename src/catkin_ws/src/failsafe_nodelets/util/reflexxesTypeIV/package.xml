@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package>
+  <name>reflexxes_type_iv</name>
+  <version>0.0.0</version>
+  <description>Fast trajectory planning package</description>
+  <maintainer email="jakob.thumm@tum.de">thumm</maintainer>
+  <license>Copyright (C) 2013 Reflexxes GmbH</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>roscpp</build_depend>
+
+  <run_depend>roscpp</run_depend>
+</package>

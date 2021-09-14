@@ -1,0 +1,54 @@
+<launch>
+	<!-- Check wether controllers should be launched -->
+	<arg name="control" default="false" />
+
+	<group ns="modrob0">
+		<!-- Loading the robot model and its descriptions -->
+		<arg name="model" default="$(find modrob_simulation)/urdf/modrob0.urdf"/>
+		<arg name="gui" default="false" />
+		<param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+		<!-- Launching robot-/joint-state-->
+		<include file="$(find modrob_simulation)/launch/modrob_move.launch" >
+			<arg name="model" value="$(arg model)"/>
+			<arg name="tf_prefix" value="robot0_tf" />
+			<arg name="gui" value="$(arg gui)" />
+		</include>
+
+		<!-- Spawning the robot -->
+		<include file="$(find modrob_simulation)/launch/modrob.launch" >
+			<arg name="robot_name" value="modrob0" />
+			<arg name="init_pose" value="-x 0.000000 -y 0.000000 -z 0.000000" />
+		</include>
+	</group>
+
+	<group ns="modrob1">
+		<!-- Loading the robot model and its descriptions -->
+		<arg name="model" default="$(find modrob_simulation)/urdf/modrob1.urdf"/>
+		<arg name="gui" default="false" />
+		<param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+		<!-- Launching robot-/joint-state-->
+		<include file="$(find modrob_simulation)/launch/modrob_move.launch" >
+			<arg name="model" value="$(arg model)"/>
+			<arg name="tf_prefix" value="robot1_tf" />
+			<arg name="gui" value="$(arg gui)" />
+		</include>
+
+		<!-- Spawning the robot -->
+		<include file="$(find modrob_simulation)/launch/modrob.launch" >
+			<arg name="robot_name" value="modrob1" />
+			<arg name="init_pose" value="-x 1.000000 -y 0.000000 -z 0.000000" />
+		</include>
+	</group>
+
+	<!-- Launching position controllers if desired -->
+	<group if="$(arg control)">
+		<include file="/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/modrob_simulation/modrob_simulation/launch/modrob0_control.launch" >
+			<arg name="name_space" value="modrob0" />
+		</include>
+		<include file="/home/jakob/Promotion/code/robot-rl/src/catkin_ws/src/modrob_simulation/modrob_simulation/launch/modrob1_control.launch" >
+			<arg name="name_space" value="modrob1" />
+		</include>
+	</group>
+</launch>

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="schunk_lwa4p_gazebo" params="name">
+    <xacro:property name="mu" value="0.0"/>
+
+    <gazebo reference="${name}_base_link">
+      <gravity>true</gravity>
+      <mu1>${mu}</mu1>
+      <mu2>${mu}</mu2>
+      <self_collide>false</self_collide>
+      <material>Gazebo/LightGrey</material>
+    </gazebo>
+
+    <gazebo reference="${name}_1_link">
+      <gravity>true</gravity>
+      <mu1>${mu}</mu1>
+      <mu2>${mu}</mu2>
+      <self_collide>false</self_collide>
+      <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <gazebo reference="${name}_2_link">
+      <gravity>true</gravity>
+      <mu1>${mu}</mu1>
+      <mu2>${mu}</mu2>
+      <self_collide>false</self_collide>
+      <material>Gazebo/LightGrey</material>
+    </gazebo>
+
+    <gazebo reference="${name}_3_link">
+      <gravity>true</gravity>
+      <mu1>${mu}</mu1>
+      <mu2>${mu}</mu2>
+      <self_collide>false</self_collide>
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="${name}_4_link">
+      <gravity>true</gravity>
+      <mu1>${mu}</mu1>
+      <mu2>${mu}</mu2>
+      <self_collide>false</self_collide>
+      <material>Gazebo/LightGrey</material>
+    </gazebo>
+
+    <gazebo reference="${name}_5_link">
+      <gravity>true</gravity>
+      <mu1>${mu}</mu1>
+      <mu2>${mu}</mu2>
+      <self_collide>false</self_collide>
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+    <gazebo reference="${name}_6_link">
+      <gravity>true</gravity>
+      <mu1>${mu}</mu1>
+      <mu2>${mu}</mu2>
+      <self_collide>false</self_collide>
+      <material>Gazebo/LightGrey</material>
+    </gazebo>
+
+    <gazebo reference="${name}_7_link">
+      <gravity>true</gravity>
+      <mu1>${mu}</mu1>
+      <mu2>${mu}</mu2>
+      <self_collide>false</self_collide>
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+  </xacro:macro>
+
+</robot>
+

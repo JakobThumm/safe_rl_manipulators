@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+<model name="sphere_obs">
+  <pose>0 0 0 0 0 0</pose>
+  <link name ='sphere_base'>
+    <gravity>0</gravity>
+    <pose>0 0 0 0 0 0</pose>
+    <inertial>
+      <!-- rho = 500 kg/m^3 -->
+      <mass>2</mass>
+      <inertia>
+        <!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors-->
+        <ixx>0.008</ixx>
+        <iyy>0.008</iyy>
+        <izz>0.008</izz>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+        <iyz>0</iyz>
+      </inertia>
+    </inertial>
+    <collision name ='collision'>
+      <geometry>
+        <sphere><radius>0.1</radius></sphere>
+      </geometry>
+    </collision>
+    <visual name='visual'>
+      <geometry>
+        <sphere><radius>0.1</radius></sphere>
+      </geometry>
+      <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Wood</name>
+          </script>
+      </material>
+    </visual>
+  </link>
+</model>
+</sdf>

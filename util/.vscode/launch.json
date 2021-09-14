@@ -1,0 +1,16 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Sliding Window",
+      "type": "python",
+      "request": "launch",
+      "program": "plot_functions/sliding_window.py",
+      "console": "integratedTerminal",
+      "args": ["/home/jakob/Dropbox/Apps/Overleaf/ICRA2022/tikz/data/unsafe_sac_her_fixed_6DoF.txt", "--window_size", "7"]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+<library path="libsimulation_time_control">
+  <class name="simulation_time_control/SimulationTimeControlNodelet" type="simulation_time_control::SimulationTimeControlNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet that manages the simulation speed
+    </description>
+  </class>
+</library>

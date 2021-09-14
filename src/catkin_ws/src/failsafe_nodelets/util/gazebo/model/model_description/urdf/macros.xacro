@@ -1,0 +1,288 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find model_description)/urdf/gazebo.xacro" />
+
+  <xacro:property name="M_PI" value="3.1415926535897931" />
+
+    <xacro:property name="sensors_data" value="${load_yaml('$(find human_cylinder)/config/sensors_parameters.yaml')}"/>
+
+  <!-- see https://secure.wikimedia.org/wikipedia/en/wiki/List_of_moment_of_inertia_tensors -->
+  <xacro:macro name="sphere_inertial" params="radius mass *origin">
+    <inertial>
+      <mass value="${mass}" />
+      <xacro:insert_block name="origin" />
+      <inertia ixx="${0.4 * mass * radius * radius}" ixy="0.0" ixz="0.0"
+        iyy="${0.4 * mass * radius * radius}" iyz="0.0"
+        izz="${0.4 * mass * radius * radius}" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:macro name="cylinder_inertial" params="radius length mass *origin">
+    <inertial>
+      <mass value="${mass}" />
+      <xacro:insert_block name="origin" />
+      <inertia ixx="${0.0833333 * mass * (3 * radius * radius + length * length)}" ixy="0.0" ixz="0.0"
+        iyy="${0.0833333 * mass * (3 * radius * radius + length * length)}" iyz="0.0"
+        izz="${0.5 * mass * radius * radius}" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:macro name="box_inertial" params="x y z mass *origin">
+    <inertial>
+      <mass value="${mass}" />
+      <xacro:insert_block name="origin" />
+      <inertia ixx="${0.0833333 * mass * (y*y + z*z)}" ixy="0.0" ixz="0.0"
+        iyy="${0.0833333 * mass * (x*x + z*z)}" iyz="0.0"
+        izz="${0.0833333 * mass * (x*x + y*y)}" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:macro name="default_inertial">
+    <inertial>
+      <mass value="0.01" />
+      <origin xyz="0 0 0" />
+      <inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001" />
+    </inertial>
+  </xacro:macro>
+
+  <xacro:macro name="box_inertia" params="m x y z">
+    <inertia  ixx="${m*(y*y+z*z)/12}" ixy = "0" ixz = "0"
+              iyy="${m*(x*x+z*z)/12}" iyz = "0" izz="${m*(x*x+z*z)/12}"
+     />
+  </xacro:macro>
+
+  <xacro:macro name="default_transmission" params="jname">
+    <transmission name="${jname}_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${jname}_joint">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="${jname}_motor">
+        <hardwareInterface>EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+  </xacro:macro>
+
+  <xacro:macro name="curtains_ray" params="curt_id id x y z dist angle ros">
+    <sensor name="ray${id}" type="ray">
+      <update_rate>40</update_rate>
+      <pose>${x} ${y} ${z} 0 0 ${angle}</pose>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>1</samples>
+            <resolution>1</resolution>
+            <min_angle>0</min_angle>
+            <max_angle>0</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.1</min>
+          <max>${dist}</max>
+          <resolution>0.03</resolution>
+        </range>
+      </ray>
+
+      <xacro:if value="${ros}">
+        <visualize>true</visualize>
+        <xacro:if value="${sensors_data['nb_presence_sensors']}">
+          <plugin name="my_plugin" filename="libLightCurtainsContinuous.so">
+            <id>${curt_id}</id>
+          </plugin>
+        </xacro:if>
+        <xacro:unless value="${sensors_data['nb_presence_sensors']}">
+          <plugin name="my_plugin" filename="libLightCurtainsChange.so">
+            <id>${curt_id}</id>
+          </plugin>
+        </xacro:unless>
+      </xacro:if>
+      <xacro:unless value="${ros}">
+        <visualize>false</visualize>
+      </xacro:unless>
+    </sensor>
+  </xacro:macro>
+
+  <xacro:macro name="light_curtains" params="x1 y1 x2 y2 id parent">
+    <link name="sender_${id}">
+      <inertial> 
+        <origin xyz="${x1} ${y1} 0.9665" rpy="0 0 ${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}"/> 
+        <mass value="0.0023"/> 
+        <xacro:box_inertia m="0.0023" x="${x1}" y="${y1}" z="1.933"/>
+      </inertial>
+
+      <!--collision name="sender_collision_${id}">
+        <origin xyz="${x1} ${y1} 0.9665" rpy="0 0 ${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}"/> 
+        <geometry>
+          <box size=".048 .04 1.933"/>
+        </geometry>
+      </collision-->
+
+      <visual name="sender_visual_${id}">
+        <origin xyz="${x1} ${y1} 0.9665" rpy="0 0 ${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}"/> 
+        <geometry>
+          <box size=".048 .04 1.933"/>
+        </geometry>
+        <material name="Blue"/>
+      </visual>
+    </link>
+
+    <joint name="sender_joint_${id}" type="fixed">
+      <axis xyz="0 0 1" />
+      <parent link="${parent}"/>
+      <child link="sender_${id}"/>
+    </joint>
+
+    <link name="receiver_${id}">
+      <inertial> 
+        <origin xyz="${x2} ${y2} 0.9665" rpy="0 0 ${asin((y1-y2)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}"/> 
+        <mass value="0.0023"/> 
+        <xacro:box_inertia m="0.0023" x="${x2}" y="${y2}" z="1.933"/>
+      </inertial>
+
+      <!--collision name="receiver_collision_${id}">
+        <origin xyz="${x2} ${y2} 0.9665" rpy="0 0 ${asin((y1-y2)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}"/> 
+        <geometry>
+          <box size=".048 .04 1.933"/>
+        </geometry>
+      </collision-->
+
+      <visual name="receiver_visual_${id}">
+        <origin xyz="${x2} ${y2} 0.9665" rpy="0 0 ${asin((y1-y2)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}"/> 
+        <geometry>
+          <box size=".048 .04 1.933"/>
+        </geometry>
+        <material name="Blue"/>
+      </visual>
+    </link>
+
+    <joint name="receiver_joint_${id}" type="fixed">
+      <axis xyz="0 0 1" />
+      <parent link="${parent}"/>
+      <child link="receiver_${id}"/>
+    </joint>
+ 
+    <gazebo reference="receiver_${id}">
+      <static>true</static>
+      <gravity>false</gravity>
+      <self_collide>false</self_collide>
+      <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <gazebo reference="sender_${id}">
+      <static>true</static>
+      <gravity>false</gravity>
+      <self_collide>false</self_collide>
+      <material>Gazebo/Blue</material>
+    <xacro:curtains_ray curt_id="${id}" id="$0_{id}" x="${x1}" y="${y1}" z="0.001" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$1_{id}" x="${x1}" y="${y1}" z="0.1" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$2_{id}" x="${x1}" y="${y1}" z="0.2" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$3_{id}" x="${x1}" y="${y1}" z="0.3" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$4_{id}" x="${x1}" y="${y1}" z="0.4" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$5_{id}" x="${x1}" y="${y1}" z="0.5" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="true"/>
+    <xacro:curtains_ray curt_id="${id}" id="$6_{id}" x="${x1}" y="${y1}" z="0.6" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$7_{id}" x="${x1}" y="${y1}" z="0.7" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$8_{id}" x="${x1}" y="${y1}" z="0.8" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$9_{id}" x="${x1}" y="${y1}" z="0.9" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$10_{id}" x="${x1}" y="${y1}" z="1.0" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$11_{id}" x="${x1}" y="${y1}" z="1.1" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$12_{id}" x="${x1}" y="${y1}" z="1.2" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$13_{id}" x="${x1}" y="${y1}" z="1.3" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$14_{id}" x="${x1}" y="${y1}" z="1.4" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$15_{id}" x="${x1}" y="${y1}" z="1.5" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$16_{id}" x="${x1}" y="${y1}" z="1.6" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$17_{id}" x="${x1}" y="${y1}" z="1.7" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    <xacro:curtains_ray curt_id="${id}" id="$18_{id}" x="${x1}" y="${y1}" z="1.8" dist="${sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))-0.024}" angle="${asin((y2-y1)/(sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))))}" ros="false"/>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:macro name="presence_sensors" params="parent">
+    <link name="detector">
+      <inertial> 
+        <origin xyz="0 0 0" rpy="0 0 0"/> 
+        <mass value="23"/> 
+        <xacro:box_inertia m="23" x="16" y="4" z="0.01"/>
+      </inertial>
+
+      <collision name="detector">
+        <origin xyz="0 0 0" rpy="0 0 0"/> 
+        <geometry>
+          <box size="${30} ${30} 1e-2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="detector_joint" type="fixed">
+      <axis xyz="0 0 1" />
+      <parent link="${parent}"/>
+      <child link="detector"/>
+    </joint>
+
+    <gazebo reference="detector">
+      <!--material>Gazebo/Blue</material-->
+      <sensor name="my_contact" type="contact">
+        <plugin name="my_plugin" filename="libPresenceSensor.so"/>
+        <contact>
+          <collision>detector_collision</collision>
+        </contact>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+  <xacro:macro name="laser_scanners" params="id x y theta range parent">
+    <joint name="laser${id}_joint" type="fixed">
+      <axis xyz="0 1 0" />
+      <origin xyz="${x} ${y} 0.35" rpy="0 0 0"/>
+      <parent link="${parent}"/>
+      <child link="laser${id}_link"/>
+    </joint>
+    <link name="laser${id}_link">
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 0.1 0.7"/>
+        </geometry>
+      </collision>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 0.1 0.7"/>
+        </geometry>
+      </visual>
+      <inertial>
+        <mass value="1e-5"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+      </inertial>
+    </link>
+    <gazebo reference="laser${id}_link">
+      <sensor type="gpu_ray" name="sensor">
+        <pose>0 0 0 0 0 ${theta}</pose>
+        <visualize>true</visualize>
+        <update_rate>40</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>720</samples>
+              <resolution>1</resolution>
+              <min_angle>-1.57079</min_angle>
+              <max_angle>1.57079</max_angle>
+            </horizontal>
+          </scan>
+          <range>
+            <min>0.1</min>
+            <max>2.5</max>
+            <resolution>0.01</resolution>
+          </range>
+        </ray>
+        <plugin name="controller" filename="libgazebo_ros_gpu_laser.so">
+          <topicName>/scan</topicName>
+          <frameName>map</frameName>
+          <id>id</id>
+        </plugin>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+
+</robot>

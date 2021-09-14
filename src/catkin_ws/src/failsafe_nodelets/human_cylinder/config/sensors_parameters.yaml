@@ -1,0 +1,50 @@
+#cutains information
+nb_curtains: 4
+
+##curtains (with positions such as p1.x < p2.x)
+curtain_0: 
+  id: 0
+  pos: [-2, -2.02, 2, -2.02]
+  delay: 0
+  pos_uncertainty: 0
+  human_maximum_thickness: 0.85
+
+curtain_1: 
+  id: 1
+  pos: [-2, -1.976, -2, 1.976]
+  delay: 0
+  pos_uncertainty: 0
+  human_maximum_thickness: 0.85
+
+curtain_2: 
+  id: 2
+  pos: [-2, 2.02, 2.02, 2]
+  delay: 0
+  pos_uncertainty: 0
+  human_maximum_thickness: 0.85
+
+curtain_3: 
+  id: 3
+  pos: [2, 1.976, 2, -1.976]
+  delay: 0
+  pos_uncertainty: 0
+  human_maximum_thickness: 0.85
+
+nb_presence_sensors: 0
+presense_sensor:
+  id: 0
+
+#laser scanner
+nb_laser_scanners: 0
+
+laser_scanner_0:
+  id: 0
+  delay: 0.016
+  uncertainty: 0.1
+  human_maximum_thickness: 1.00
+  range: 2.5
+  origin: [0.5, 0.5, -1.57079]
+
+#human information
+max_speed: 1.6
+sample_time: 0.004

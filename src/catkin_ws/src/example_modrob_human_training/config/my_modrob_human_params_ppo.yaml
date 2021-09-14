@@ -1,0 +1,25 @@
+modrob:
+  robot_name: modrob0
+  init_joint_position: [0.0, 0.0, 0.0]
+  ros_abs_env_var: "ROBOT_RL_SIM_ROOT"
+ppo:
+    task_and_robot_environment_name: 'ModRobHumanEnv-v0'
+    running_step: 0.04 # amount of time the control will be executed
+    pos_step: 0.016     # increment in position for each command
+    seed: 1
+    hid: [32,32]
+    l: 2
+    clip_ratio: 0.2
+    pi_lr: 0.0003
+    vf_lr: 0.001
+    train_pi_iters: 80
+    train_v_iters: 80
+    lam: 0.97
+    target_kl: 0.01 
+    save_freq: 10
+    alpha: 0.1
+    gamma: 0.7
+    n_epochs: 100
+    steps_per_epoch: 1000
+    max_steps_per_episode: 100
+    running_step: 0.06 # Time for each step

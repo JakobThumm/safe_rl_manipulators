@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <param name="startup_time" value="0.5"/>
+  <node name="initialisation" type="initialisation_node" pkg="initialisation" output="screen"/>
+</launch>

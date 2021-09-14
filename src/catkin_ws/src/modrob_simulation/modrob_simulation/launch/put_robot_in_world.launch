@@ -1,0 +1,88 @@
+<launch>
+    <!--This file puts (currently one) modular robot(s) in the existing gazebo world.
+        This file launches everything needed for robot control. This is your startup file.
+        We load parameters to the server, start the robot, and setup communication between the robot and the environment.
+    -->
+
+    <!-- >>> Arguments <<< -->
+    <arg name="robot_name" default="modrob0"/>
+    <!-- ~~~ Arguments to set ~~~ -->
+    <arg name="control" default="true" /> <!-- Enable ROS controllers-->
+    <arg name="moveit" default="false" /> <!-- Activate moveit control instead of classic control-->
+    <arg name="model" default="$(find modrob_simulation)/urdf/modrob0.urdf" /> <!-- The robot description file-->
+	<arg name="init_x" default="0.200000" /> <!-- The robot init position-->
+	<arg name="init_y" default="0.000000" />
+	<arg name="init_z" default="0.000000" />
+    <arg name="roll" default="0.000000" />
+	<arg name="pitch" default="0.000000" />
+	<arg name="yaw" default="0.000000" />
+    <group ns="$(arg robot_name)">
+        <param name="init_x" value="$(arg init_x)" /> 
+        <param name="init_y" value="$(arg init_y)" />
+        <param name="init_z" value="$(arg init_z)" />
+        <param name="init_roll" value="$(arg roll)" /> 
+        <param name="init_pitch" value="$(arg pitch)" />
+        <param name="init_yaw" value="$(arg yaw)" />
+    </group>
+
+    <!-- ~~~ Arguments that are recommended to stay untouched ~~~ -->
+    <arg name="manual" default="false"/>
+    <arg name="rep" default="false"/>
+    <arg name="modrob_simulation_package_path" default="$(find modrob_simulation)"/>
+    <!-- moveit==false -->
+    <!-- The file describing all robot controllers to load-->
+    <arg name="controller_description_file" default="$(find modrob_simulation)/config/$(arg robot_name)_control.yaml" unless="$(arg moveit)"/>
+    <!-- Unfortunately, this cannot be automatically loaded from file. Consider parsing this before calling this function and add as argument. -->
+    <arg name="controller_list" default="joint_state_controller joint0_position_controller joint1_position_controller joint2_position_controller hand_to_finger1_position_controller hand_to_finger2_position_controller" unless="$(arg moveit)"/>
+    <arg name="stopped_controller_list" default="" unless="$(arg moveit)"/>
+    <!-- moveit==true -->
+    <arg name="moveit_package_name" default="modrob_moveit_config" if="$(arg moveit)"/>
+    <arg name="moveit_package" default="$(eval find(moveit_package_name))" if="$(arg moveit)"/>
+    <arg name="controller_description_file" default="$(arg moveit_package)/config/ros_controllers.yaml" if="$(arg moveit)"/>
+    <arg name="controller_list" default="joint_state_controller arm_controller gripper_controller" if="$(arg moveit)"/>
+    <arg name="stopped_controller_list" default="arm_position_controller gripper_position_controller" if="$(arg moveit)"/>
+    <!-- There might be situations where you want to use the moveit structure but do not want the moveit overlap, so you could disable starting moveit. -->
+    <arg name="start_moveit" default="true" if="$(arg moveit)"/>
+    <arg name="start_moveit" default="false" unless="$(arg moveit)"/>
+    <!-- >>> Parameters <<< -->
+    <param name="/use_sim_time" value="true"/>
+    <param name="modrob_simulation_package_path" value="$(arg modrob_simulation_package_path)" />
+    <!-- Loading parameters onto the server -->
+    <rosparam file = "$(arg modrob_simulation_package_path)/config/general_config.yaml" />
+    
+    <!-- Launching the robot(s) -->
+    <include file="$(find modrob_simulation)/launch/single_gazebo.launch">
+        <arg name="control" value="$(arg control)" />
+        <arg name="model" value="$(arg model)" />
+        <arg name="init_x" value="$(arg init_x)" />
+        <arg name="init_y" value="$(arg init_y)" />
+        <arg name="init_z" value="$(arg init_z)" />
+        <arg name="roll" value="$(arg roll)" />
+        <arg name="pitch" value="$(arg pitch)" />
+        <arg name="yaw" value="$(arg yaw)" />
+        <arg name="robot_name" value="$(arg robot_name)" />
+        <arg name="controller_description_file" value="$(arg controller_description_file)" />
+        <arg name="controller_list" value="$(arg controller_list)"/>
+        <arg name="stopped_controller_list" value="$(arg stopped_controller_list)"/>
+    </include>
+
+    <!-- Launching moveit integration -->
+    <group if="$(arg start_moveit)">
+        <include file="$(arg modrob_simulation_package_path)/launch/modrob_planning_execution.launch">
+            <arg name="load_robot_description" value="false"/>
+            <arg name="moveit_package" value="$(arg moveit_package)"/>
+        </include>
+    </group>
+
+    <!-- Launching the republishing node; Launching manual robot control if desired and position-controllers are available -->
+    <group unless="$(arg moveit)">
+        <group if="$(arg control)">
+            <group if="$(arg rep)">
+                <node name="republishing" pkg="modrob_simulation" type="republishing"/>
+            </group>
+            <group if="$(arg manual)">
+                <node name="manual_terminal" pkg="modrob_simulation" type="motion_terminal" output="screen" />
+            </group>
+        </group>
+    </group>
+</launch>

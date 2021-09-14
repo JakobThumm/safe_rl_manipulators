@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro"
+        name="box2">
+
+  <xacro:include filename="$(find model_description)/urdf/macros.xacro" />
+
+  <xacro:property name="ros_param" value="${load_yaml('$(find model_control)/config/schunk_control.yaml')}"/>
+
+  <xacro:macro name="actor" params="id x y ax ay az">
+
+    <link name="actor${id}">
+      <inertial>
+         <mass value="10"/>    
+         <origin xyz="${x} ${y} 0" rpy="0 0 0"/>
+         <xacro:box_inertia m="10" x="${x}" y="${y}" z="0.5"/>
+      </inertial>
+      <collision name="collision${id}">
+        <origin xyz="${x} ${y} 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="1 1 1"/>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>0</mu>
+              <mu2>0</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+      <visual name="visual${id}">
+        <origin xyz="${x} ${y} 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="1 1 1"/>
+        </geometry>
+      </visual>
+    </link>
+
+    <joint name="joint${id}" type="prismatic">
+      <axis xyz="${-ax} ${-ay} ${-az}" />
+      <limit lower="-1e16" higher="1e16" effort="-1" velocity="-1"/>
+      <origin xyz="0 0 0.5" rpy="0 0 0"/>
+      <parent link="world"/>
+      <child link="actor${id}"/>
+    </joint>
+  
+  <!--xacro:if value="${ros_param['laser_scanner']}">
+    <gazebo>
+      <plugin name="move" filename="libActor.so">
+        <speed>2</speed>
+        <begin>13</begin>
+        <end>16</end>
+      </plugin>
+    </gazebo>
+  </xacro:if-->
+  </xacro:macro>
+  <link name="world"/>
+
+  <xacro:macro name="loop" params="N">
+    <xacro:property name="actor" value="'actor_${N}'"/>
+    <xacro:actor id="${ros_param[actor]['id']}" x="${ros_param[actor]['pos'][0]}" y="${ros_param[actor]['pos'][1]}" ax="${ros_param[actor]['axis'][0]}" ay="${ros_param[actor]['axis'][1]}" az="${ros_param[actor]['axis'][2]}"/>
+    <xacro:if value="${N}">
+      <xacro:loop N="${N-1}" />
+    </xacro:if>
+  </xacro:macro>
+
+  <xacro:if value="${ros_param['nb_actor']}">
+    <xacro:loop N="${ros_param['nb_actor']-1}"/>
+  </xacro:if>
+
+ <gazebo>
+    <plugin name="move" filename="libActor.so">
+    </plugin>
+  </gazebo>
+
+</robot>

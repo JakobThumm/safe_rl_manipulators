@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<sdf version="1.5">
+<actor name="actor">
+  <skin>
+    <filename>../../src/obstacles/animations/working/CMU_human_no_hand_62_01_gazebo_conform.dae</filename>
+  </skin>
+  <animation name="human_animation">
+    <filename>../../src/obstacles/animations/working/CMU_human_no_hand_62_01_gazebo_conform.dae</filename>
+  </animation>
+  <!-- Attach the plugin to this model-->
+  <plugin name="motion_capture_plugin" filename="libmotion_capture.so">
+    <animation_file>/src/obstacles/animations/working/CMU_human_no_hand_62_01_gazebo_conform.dae</animation_file>
+    <frame_rate>50</frame_rate>
+    <scaling collision="hip_abdomen_collision" scale="15.0 15.0 1.0"/>
+    <scaling collision="hip_rButtock_collision" scale="0.1 0.1 0.1"/>
+    <scaling collision="hip_lButtock_collision" scale="0.1 0.1 0.1"/>
+    <scaling collision="abdomen_chest_collision" scale="15.0 15.0 1.0"/>
+    <scaling collision="chest_neck_collision" scale="15.0 15.0 1.0"/>
+    <scaling collision="chest_rCollar_collision" scale="6.0 6.0 1.0"/>
+    <scaling collision="chest_lCollar_collision" scale="6.0 6.0 1.0"/>
+    <scaling collision="neck_head_collision" scale="10.0 10.0 3.5" pose="0 0 0.1 0 0 0"/>
+    <scaling collision="rCollar_rShldr_collision" scale="7.0 7.0 1.5"/>
+    <scaling collision="rShldr_rForeArm_collision" scale="7.0 7.0 1.1"/>
+    <scaling collision="rForeArm_rHand_collision" scale="6.0 6.0 1.6" pose="0 0 0.1 0 0 0"/>
+    <scaling collision="lCollar_lShldr_collision" scale="7.0 7.0 1.6"/>
+    <scaling collision="lShldr_lForeArm_collision" scale="7.0 7.0 1.1"/>
+    <scaling collision="lForeArm_lHand_collision" scale="6.0 6.0 1.5" pose="0 0 0.1 0 0 0"/>
+    <scaling collision="rButtock_rThigh_collision" scale="10.0 10.0 8.0"/>
+    <scaling collision="rThigh_rShin_collision" scale="12.0 12.0 1.0"/>
+    <scaling collision="rShin_rFoot_collision" scale="9.0 9.0 1.0"/>
+    <scaling collision="lButtock_lThigh_collision" scale="10.0 10.0 8.0"/>
+    <scaling collision="lThigh_lShin_collision" scale="12.0 12.0 1.0"/>
+    <scaling collision="lShin_lFoot_collision" scale="9.0 9.0 1.0" pose="0 0 0 0 0 0"/>
+  </plugin>  
+</actor>
+</sdf>

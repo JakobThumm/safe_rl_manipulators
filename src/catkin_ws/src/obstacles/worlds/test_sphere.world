@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+
+    <!-- A testing model that includes the Velodyne sensor model -->
+    <model name="my_sphere">
+      <pose>0 2 0.7 0 0 0</pose>
+      <include>
+        <uri>file://sphere_obs/</uri>
+      </include>
+      
+      <!-- Attach the plugin to this model -->
+      <plugin name="cv_sphere" filename="libcv_sphere.so">
+        <velocity>-0.5</velocity>
+      </plugin> 
+    </model>
+    
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- A ground plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+  </world>
+</sdf>

@@ -1,0 +1,27 @@
+<launch>
+  <rosparam file = "$(find failsafe_consistent_planner)/config/parameters.yaml" />
+  <rosparam file = "$(find human_cylinder)/config/sensors_parameters.yaml" />
+  <rosparam file = "$(find robot_reach)/config/robot_parameters.yaml" />
+  <rosparam file="$(find model_control)/config/schunk_control.yaml"/>
+
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet" args="manager" output="screen"/>
+  
+  <node pkg="nodelet" type="nodelet" name="FailsafeConsistentNodelet" args="load online_verification/FailsafeConsistentNodelet standalone_nodelet" output="screen"/>
+  <node pkg="nodelet" type="nodelet" name="HumanCylinderNodelet" args="load human_cylinder/HumanCylinderNodelet standalone_nodelet" output="screen"/>
+  <node pkg="nodelet" type="nodelet" name="RobotReachNodelet" args="load robot_reach/RobotReachNodelet standalone_nodelet" output="screen"/>
+  <node pkg="nodelet" type="nodelet" name="VerifyISONodelet" args="load verify_iso/VerifyISONodelet standalone_nodelet" output="screen"/>
+  <node pkg="nodelet" type="nodelet" name="safe_trajectory_selector" args="load safe_trajectory_selector/SafeTrajectorySelectorNodelet standalone_nodelet"/>
+
+  <node name="initialisation" type="initialisation_node" pkg="initialisation"/>
+
+  <!-- Laser -->
+  <node pkg="leg_detector" type="leg_detector" name="leg_detector" args="scan:=scan $(find leg_detector)/config/trained_leg_detector.yaml" output="screen"/>
+
+  <node name="sick" pkg="sicktoolbox_wrapper" type="sicklms" args="_port:=/dev/ttyUSB0 _baud:=38400"/>
+
+  <!-- RVIZ -->
+  <node pkg="nodelet" type="nodelet" name="RvizMarkerNodelet" args="load rviz_marker/RvizMarkerNodelet standalone_nodelet"/>
+  
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find my_schunk_control)/config/config.rviz" />
+	  
+</launch>

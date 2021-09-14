@@ -1,0 +1,8 @@
+<launch>
+  <rosparam file = "$(find human_cylinder)/config/sensors_parameters.yaml" />
+
+  <node pkg="nodelet" type="nodelet" name="standalone_nodelet" args="manager" output="screen"/>
+  
+  <node pkg="nodelet" type="nodelet" name="HumanCylinderNodelet" args="load human_cylinder/HumanCylinderNodelet standalone_nodelet" output="screen"/>
+	  
+</launch>

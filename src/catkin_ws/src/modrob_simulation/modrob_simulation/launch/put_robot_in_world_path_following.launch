@@ -1,0 +1,56 @@
+<launch>
+  <!--This file puts (currently one) modular robot(s) in the existing gazebo world.
+      This file launches everything needed for robot control. This is your startup file.
+      We load parameters to the server, start the robot, and setup communication between the robot and the environment.
+      This launch file is intended to be used for the modular robot with failsafe planning using path following.
+  -->
+
+  <!-- >>> Arguments <<< -->
+  <arg name="robot_name" default="modrob0"/>
+  <arg name="modrob_simulation_package_path" default="$(find modrob_simulation)"/>
+  <!-- ~~~ Arguments to set ~~~ -->
+  <!-- Enable ROS controllers-->
+  <arg name="control" default="true" /> 
+  <!-- The robot description file-->
+  <arg name="model" default="$(arg modrob_simulation_package_path)/urdf/$(arg robot_name).urdf" /> 
+  <!-- The robot init position-->
+  <arg name="init_x" default="0.000000" /> 
+  <arg name="init_y" default="0.000000" />
+  <arg name="init_z" default="0.000000" />
+  <arg name="roll" default="0.000000" />
+  <arg name="pitch" default="0.000000" />
+  <arg name="yaw" default="0.000000" />
+  <group ns="$(arg robot_name)">
+      <param name="init_x" value="$(arg init_x)" /> 
+      <param name="init_y" value="$(arg init_y)" />
+      <param name="init_z" value="$(arg init_z)" />
+      <param name="init_roll" value="$(arg roll)" /> 
+      <param name="init_pitch" value="$(arg pitch)" />
+      <param name="init_yaw" value="$(arg yaw)" />
+  </group>
+  <!-- Controller information. Check out the controller description file for more detail. -->
+  <arg name="controller_description_file" default="$(find modrob_simulation)/config/$(arg robot_name)_group_position_control.yaml"/>
+  <arg name="controller_list" default="joint_state_controller arm_position_controller gripper_position_controller"/>
+  <arg name="stopped_controller_list" default=""/>
+  <!-- Simulation parameters -->
+  <param name="/use_sim_time" value="true"/>
+  <param name="modrob_simulation_package_path" value="$(arg modrob_simulation_package_path)" />
+  <!-- Loading some robot information parameters onto the server -->
+  <rosparam file = "$(arg modrob_simulation_package_path)/config/general_config.yaml" />
+    
+  <!-- Launching the robot(s) -->
+  <include file="$(find modrob_simulation)/launch/single_gazebo.launch">
+      <arg name="control" value="$(arg control)" />
+      <arg name="model" value="$(arg model)" />
+      <arg name="init_x" value="$(arg init_x)" />
+      <arg name="init_y" value="$(arg init_y)" />
+      <arg name="init_z" value="$(arg init_z)" />
+      <arg name="roll" value="$(arg roll)" />
+      <arg name="pitch" value="$(arg pitch)" />
+      <arg name="yaw" value="$(arg yaw)" />
+      <arg name="robot_name" value="$(arg robot_name)" />
+      <arg name="controller_description_file" value="$(arg controller_description_file)" />
+      <arg name="controller_list" value="$(arg controller_list)"/>
+      <arg name="stopped_controller_list" value="$(arg stopped_controller_list)"/>
+  </include>
+</launch>

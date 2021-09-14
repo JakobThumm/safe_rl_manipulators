@@ -1,0 +1,7 @@
+<library path="librobot_reach">
+  <class name="robot_reach/RobotReachNodelet" type="robot_reach::RobotReachNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet that computes the robot reachable sets.
+    </description>
+  </class>
+</library>

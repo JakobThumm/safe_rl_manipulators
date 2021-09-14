@@ -1,0 +1,18 @@
+<launch>
+    <arg name="world_file" default="$(find modrob_simulation)/worlds/test_collision_parameters.world"/>
+
+    <arg name="paused" default="true"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="init_pose" default="-x 0 -y 0 -z 0"/>
+    <arg name="model" default="$(find modrob_simulation)/urdf/test_module.urdf" />
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg world_file)" />
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    </include>
+
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+    <node name="spawn_module" pkg="gazebo_ros" type="spawn_model" args="$(arg init_pose) -urdf -param /robot_description -model test_module" respawn="false" output="screen"/>
+
+</launch>

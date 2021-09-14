@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <rosparam file = "$(find failsafe_consistent_planner)/config/parameters_modrob0_init_traj.yaml" />
+  <rosparam file = "$(find human_cylinder)/config/sensors_parameters.yaml" />
+  <rosparam file = "$(find robot_reach)/config/robot_parameters_modrob0.yaml" />
+  <rosparam file = "$(find control_command_translator)/config/parameters.yaml" />
+  <!--<rosparam file="$(find model_control)/config/schunk_control.yaml"/>-->
+
+  <!-- Use the advanced verification that allows safe actions near humans -->
+  <param name="advanced_verify_iso" value="true"/>
+  <param name="startup_time" value="15"/>
+
+  <arg name="world_file" default="$(find modrob_simulation)/worlds/simple_working_env.world"/>
+
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <arg name="put_robot_in_world" default="true" />
+  <arg name="put_robot_in_world_package" default="$(find modrob_simulation)" />
+  <arg name="put_robot_in_world_launch" default="put_robot_in_world" />
+
+  <arg name="x" default="0.0" />
+  <arg name="y" default="0.0" />
+  <arg name="z" default="0.765" />
+  <arg name="roll" default="0.0"/>
+  <arg name="pitch" default="0.0"/>
+  <arg name="yaw" default="0.0"/>
+
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <arg name="world_name" value="$(arg world_file)" />
+      <arg name="paused" value="$(arg paused)"/>
+      <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+      <arg name="gui" value="$(arg gui)"/>
+      <arg name="headless" value="$(arg headless)"/>
+      <arg name="debug" value="$(arg debug)"/>
+      <arg name="verbose" value="true" />
+  </include>
+
+  <group if="$(arg put_robot_in_world)">
+      <include file="$(arg put_robot_in_world_package)/launch/$(arg put_robot_in_world_launch).launch">
+        <arg name="init_x" value="$(arg x)"/>
+        <arg name="init_y" value="$(arg y)"/>
+        <arg name="init_z" value="$(arg z)"/>
+        <arg name="roll" value="$(arg roll)"/>
+        <arg name="pitch" value="$(arg pitch)"/>
+        <arg name="yaw" value="$(arg yaw)"/>
+        <arg name="controller_list" value="joint_state_controller arm_position_controller gripper_position_controller"/>
+        <arg name="stopped_controller_list" value="arm_controller gripper_controller"/>
+        <arg name="moveit" value="true"/>
+        <arg name="start_moveit" value="false"/>
+      </include>
+  </group>
+
+  <node name="dummy_simulation_control" type="dummy_simulation_control" pkg="dummy_simulation_control"/>
+
+</launch>
