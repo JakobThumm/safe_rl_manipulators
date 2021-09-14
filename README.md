@@ -1,9 +1,12 @@
 # Robot RL
 
-This project covers everything to train verifiably safe manipulators in human environments using reinforcement learning (RL).
-The simulation environment is based on Gazebo.
-In the future we are planning to also incorporate real-world training.
-
+Deep reinforcement learning (RL) has shown promising results in robotic manipulator path planning for complex goals.
+However, to this point, no method guarantees the safety of highly dynamic obstacles, such as humans, in manipulator control.
+This lack of formal safety prevents the application of RL for manipulators in real-world human environments.
+Therefore, we propose a shielding mechanism that guarantees ISO-verified human safety while training and deploying RL algorithms on manipulators.
+We utilize a fast reachability analysis of humans and manipulators to guarantee that the manipulator comes to a full stop before a human can reach it.
+Our proposed method not only guarantees safety but also significantly improves the RL performance by preventing episode-ending collisions.
+We present the performance of our proposed method in simulation using human motion capture data.
 
 ## Installation
 We work on Ubuntu 20.04.
