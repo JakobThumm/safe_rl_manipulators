@@ -1,0 +1,24 @@
+modrob:
+  robot_name: modrob1
+  ros_abs_env_var: "ROBOT_RL_SIM_ROOT"
+sac:
+    task_and_robot_environment_name: 'ModRobSafeHumanEnv-v0'
+    seed: 1
+    hid: [64, 64, 64]
+    l: 3
+    n_epochs: 200
+    n_episodes_per_epoch: 30
+    replay_size: 1000000
+    gamma: 0.99
+    polyak: 0.995
+    lr: 0.0005
+    alpha: 0.2
+    batch_size: 128
+    start_steps: 5000
+    update_after: 1000
+    update_every: 200
+    num_test_episodes: 1
+    max_ep_len: 2000
+    save_freq: 5
+    n_updates: 40
+    k_her_samples: 4

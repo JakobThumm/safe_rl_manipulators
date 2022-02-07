@@ -1,0 +1,65 @@
+modrob: #namespace
+  joint_min: -3.0
+  joint_max: 3.0
+  joint_max_delta: 0.02 # Max theoretically allowed movement per execution step (in rad)
+  joint_max_v: 2
+  gripper1_min: 0
+  gripper1_max: 0.01
+  gripper2_min: 0.03
+  gripper2_max: 0.04
+  gripper_max_delta: 0.003 # Max theoretically allowed movement per execution step (in m)
+  ee_limits: # Overapproximative end effector position limits
+    max:
+      x: 1
+      y: 1
+      z: 1
+    min:
+      x: -1
+      y: -1
+      z: 0
+  use_delta_actions: True # true: Use differential position commands, false: Use absolute position commands
+
+  base_pose: # base pose
+    position:
+      x: -0.25
+      y: 0
+      z: 0.77
+    orientation:
+      x: 0
+      y: 0
+      z: 1
+      w: 0
+
+  movement_error: 0.001 # Precision maximum for regular movement
+  movement_timeout: 0.01 # Time waited until next movement execution
+  init_error: 0.02 # Precision for start position
+  goal_error: 0.08 # Precision for goal reached: each angle difference
+  
+  init_hand_to_finger1_position: 0
+  init_hand_to_finger2_position: 0.04
+  
+  init_joint_position: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0] #-0.8, 1.5, 0.2, 0.0, -0.1, 0.0
+  goal_joint_position: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0] #[1.2, 1.5, 0.2, 0.0, -0.1, 0.0]
+  use_goal_randomization: True
+
+  goal_area: # Goal pose q = [2.2, 0.5, 2]
+    position: 
+      x_min: -5
+      x_max: 5
+      y_min: -5
+      y_max: 5
+      z_min: 0.1
+      z_max: 5
+    joint_diff: 3
+  
+  distance_penalty_position: 0.0 # Reward penalty for position distance
+  distance_penalty_orientation: 0.0 # Reward penalty for orientation distance
+  time_penalty: -1 # Time penalty for every step
+  goal_reward: 0 # Points given when reaching the goal
+  collision_penalty: -1000 # Penalty when colliding with an object
+  critical_collision_penalty: -1000 # Penalty for critically colliding with a human
+
+  human_motion_pos_random: 0.2 # Randomize position of animation uniformly by +/- this value
+  human_motion_time_random: 1 # Randomize the starting time of the animation uniformly by this value [0; val]
+
+  safety_distance_ground: 0.03
