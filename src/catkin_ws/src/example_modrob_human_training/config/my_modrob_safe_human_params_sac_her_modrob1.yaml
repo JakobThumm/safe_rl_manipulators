@@ -18,7 +18,7 @@ sac:
     update_after: 1000
     update_every: 200
     num_test_episodes: 1
-    max_ep_len: 100
+    max_ep_len: 2000
     save_freq: 5
     n_updates: 40
     k_her_samples: 4
