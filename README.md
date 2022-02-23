@@ -8,6 +8,9 @@ We utilize a fast reachability analysis of humans and manipulators to guarantee 
 Our proposed method not only guarantees safety but also significantly improves the RL performance by preventing episode-ending collisions.
 We present the performance of our proposed method in simulation using human motion capture data.
 
+## Human reachability analysis
+Our code is partly based on an early version of our published human reachability package [SaRA](https://github.com/Sven-Schepp/SaRA). We are planning on integrating the new version of SaRA in our safety shield soon.
+
 ## Installation
 We work on Ubuntu 20.04.
 If you run Ubuntu 20.04, you can install our project locally with the following steps.
